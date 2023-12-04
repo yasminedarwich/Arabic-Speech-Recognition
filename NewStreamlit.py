@@ -78,6 +78,15 @@ st.markdown(
 st.image("podeoCapture.PNG", caption="Image1")
 st.title("Podeo Audio-Transcription App")
 
+# Get the available microphone devices
+microphone_names = sr.Microphone.list_microphone_names()
+
+# Create a Streamlit widget to select a microphone
+selected_microphone = st.selectbox("Select Microphone", microphone_names)
+
+# Find the index of the selected microphone
+device_index = microphone_names.index(selected_microphone)
+
 # Create a sidebar for navigation
 st.sidebar.title("Menu")
 page = st.sidebar.radio("Select a Page", ["Home💫", "Transcription🎤", "Analytics📊"])
@@ -102,15 +111,6 @@ if page == "Home💫":
     # Add images, GIFs, or any content you want to display on the introduction page
     st.image("Capture34.PNG", caption="Image2")
    
-
-# Get the available microphone devices
-microphone_names = sr.Microphone.list_microphone_names()
-
-# Create a Streamlit widget to select a microphone
-selected_microphone = st.selectbox("Select Microphone", microphone_names)
-
-# Find the index of the selected microphone
-device_index = microphone_names.index(selected_microphone)
 
 elif page == "Transcription🎤":
     # This is the transcription page
