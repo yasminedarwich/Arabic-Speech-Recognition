@@ -117,21 +117,8 @@ elif page == "Transcription🎤":
     # Add a button to trigger audio recording
     if st.button("Record an Audio✨"):
 
-# Get the available microphone devices
-        microphone_names = sr.Microphone.list_microphone_names()
-
-# Create a Streamlit widget to select a microphone
-        selected_microphone = st.selectbox("Select Microphone", microphone_names)
-
-# Find the index of the selected microphone, handling the case where it's not found
-        device_index = microphone_names.index(selected_microphone) if selected_microphone in microphone_names else None
-
-        if device_index is None:
-            st.error("Error: Selected microphone not found. Please choose a different microphone.")
-            st.stop()
-
         # Start recording audio from the microphone
-        with sr.Microphone(device_index=device_index) as source:
+        with sr.Microphone() as source:
             st.info("Recording... Speak something!")
             audio = recognizer.listen(source)
 
