@@ -1,1 +1,6 @@
-Portaudio==19.7.0
+libasound-dev
+portaudio19-dev 
+libportaudio2 
+libportaudiocpp0
+ffmpeg 
+libav-tools
