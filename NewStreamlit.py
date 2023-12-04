@@ -103,6 +103,14 @@ if page == "Home💫":
     st.image("Capture34.PNG", caption="Image2")
    
 
+# Get the available microphone devices
+microphone_names = sr.Microphone.list_microphone_names()
+
+# Create a Streamlit widget to select a microphone
+selected_microphone = st.selectbox("Select Microphone", microphone_names)
+
+# Find the index of the selected microphone
+device_index = microphone_names.index(selected_microphone)
 
 elif page == "Transcription🎤":
     # This is the transcription page
@@ -118,7 +126,7 @@ elif page == "Transcription🎤":
     # Add a button to trigger audio recording
     if st.button("Record an Audio✨"):
         # Start recording audio from the microphone
-        with sr.Microphone() as source:
+        with sr.Microphone(device_index=device_index) as source:
             st.info("Recording... Speak something!")
             audio = recognizer.listen(source)
 
