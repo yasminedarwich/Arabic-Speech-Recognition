@@ -118,7 +118,7 @@ elif page == "Transcription🎤":
     # Add a button to trigger audio recording
     if st.button("Record an Audio✨"):
         # Start recording audio from the microphone
-        with sr.Microphone() as source:
+        with sr.Microphone(device_index=0) as source:
             st.info("Recording... Speak something!")
             audio = recognizer.listen(source)
 
