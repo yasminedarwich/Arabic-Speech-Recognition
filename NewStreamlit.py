@@ -118,13 +118,13 @@ elif page == "Transcription🎤":
     if st.button("Record an Audio✨"):
 
 # Get the available microphone devices
-            microphone_names = sr.Microphone.list_microphone_names()
+        microphone_names = sr.Microphone.list_microphone_names()
 
 # Create a Streamlit widget to select a microphone
-            selected_microphone = st.selectbox("Select Microphone", microphone_names)
+        selected_microphone = st.selectbox("Select Microphone", microphone_names)
 
 # Find the index of the selected microphone, handling the case where it's not found
-            device_index = microphone_names.index(selected_microphone) if selected_microphone in microphone_names else None
+        device_index = microphone_names.index(selected_microphone) if selected_microphone in microphone_names else None
 
         if device_index is None:
             st.error("Error: Selected microphone not found. Please choose a different microphone.")
