@@ -78,15 +78,6 @@ st.markdown(
 st.image("podeoCapture.PNG", caption="Image1")
 st.title("Podeo Audio-Transcription App")
 
-# Get the available microphone devices
-microphone_names = sr.Microphone.list_microphone_names()
-
-# Create a Streamlit widget to select a microphone
-selected_microphone = st.selectbox("Select Microphone", microphone_names)
-
-# Find the index of the selected microphone
-device_index = microphone_names.index(selected_microphone)
-
 # Create a sidebar for navigation
 st.sidebar.title("Menu")
 page = st.sidebar.radio("Select a Page", ["Home💫", "Transcription🎤", "Analytics📊"])
@@ -122,6 +113,15 @@ elif page == "Transcription🎤":
 
     # Initialize the ArabicTranscriptionModel
     model = ArabicTranscriptionModel()
+
+    # Get the available microphone devices
+microphone_names = sr.Microphone.list_microphone_names()
+
+# Create a Streamlit widget to select a microphone
+selected_microphone = st.selectbox("Select Microphone", microphone_names)
+
+# Find the index of the selected microphone
+device_index = microphone_names.index(selected_microphone)
 
     # Add a button to trigger audio recording
     if st.button("Record an Audio✨"):
