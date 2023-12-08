@@ -133,7 +133,7 @@ elif page == "Transcription🎤":
         except sr.RequestError as e:
             st.error(f"Could not request results; {e}")
 
-    if st.button("Record an Audio✨"):
+    st.button("Record an Audio✨"):
 
        
 
