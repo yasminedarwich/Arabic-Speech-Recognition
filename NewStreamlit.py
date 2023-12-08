@@ -119,13 +119,13 @@ elif page == "Transcription🎤":
     micAudio = audiorecorder("Click to record", "Click to stop recording") # Start recording audio from the microphone
 
     if len(micAudio) > 0:
-    # To play audio in frontend:
+        # To play audio in frontend:
         st.audio(micAudio.export().read())  
         
-        uploaded_file = micAudio.export("audio.wav", format="wav")
-        if uploaded_file is not None:
+        recordedFile = micAudio.export("audio.wav", format="wav")
+        if recordedFile is not None:
             with NamedTemporaryFile(delete=False) as temp_audio:
-                temp_audio.write(uploaded_file.read())
+                temp_audio.write(recordedFile.read())
     
             # Transcribe the uploaded audio file
             audio_file = sr.AudioFile(temp_audio.name)
