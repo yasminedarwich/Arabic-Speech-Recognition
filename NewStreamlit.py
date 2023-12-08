@@ -13,25 +13,35 @@ import io
 import base64
 import seaborn as sns
 from transformers import pipeline
+import nltk
+from textblob import TextBlob
+from nltk.corpus import stopwords
 
-def sentiment_analysis(text):
-  # Load the sentiment analysis model
-  model = pipeline("sentiment-analysis", model="XLM-R-L-ARABIC-SENT")
+# Download NLTK resources
+nltk.download('punkt')
+nltk.download('stopwords')
 
-  # Predict the sentiment
-  results = model(text)
+# Function to preprocess text
+def preprocess(text):
+  # Lowercase text
+  text = text.lower()
+  # Remove punctuation
+  text = ''.join([c for c in text if not c.isalnum() and c != " "])
+  # Tokenize text
+  words = nltk.word_tokenize(text)
+  # Remove stop words
+  words = [word for word in words if word.lower() not in stopwords.words('arabic')]
+  return ' '.join(words)
 
-  # Count the occurrences of each sentiment label
-  sentiment_counts = {
-    "positive": 0,
-    "neutral": 0,
-    "negative": 0,
-  }
-
-  for result in results:
-    sentiment_counts[result["label"]] += 1
-
-  return sentiment_counts
+# Function to perform sentiment analysis
+def analyze_sentiment(text):
+  # Preprocess the text
+  preprocessed_text = preprocess(text)
+  # Create TextBlob object
+  blob = TextBlob(preprocessed_text)
+  # Analyze sentiment
+  sentiment = blob.sentiment
+  return sentiment.polarity, sentiment.subjectivity
 
 
 
@@ -259,43 +269,22 @@ elif page == "Transcription🎤":
         except sr.RequestError as e:
             st.error(f"Could not request results; {e}")
 
-sentiment_analysis_checkbox = st.checkbox("Perform Sentiment Analysis")
+def transcribe_and_analyze(audio_file):
+  # Transcribe the audio
+  transcript = transcribe_audio(audio_file)
 
-# Sentiment analysis progress bar and placeholder
-sa_progress_bar = st.progress(0)
-sa_latest_iteration = st.empty()
+  # Perform sentiment analysis
+  polarity, subjectivity = analyze_sentiment(transcript)
 
-# Check if sentiment analysis is requested
-if sentiment_analysis_checkbox:
-  # Start progress bar and update text
-  sa_latest_iteration.text("Analyzing Sentiment...")
-  sa_progress_bar.progress(0)
+  # Display results
+  st.write(f"Transcript: {transcript}")
+  st.write(f"Sentiment Polarity: {polarity}")
+  st.write(f"Sentiment Subjectivity: {subjectivity}")
 
-  # Perform sentiment analysis on generated text
-  sentiment_counts = sentiment_analysis(transcript)
-
-  # Update progress bar and show results
-  sa_progress_bar.progress(100)
-  st.success("Sentiment Analysis Done!")
-
-  # Create and display visualizations
-  st.header("Sentiment Analysis Results")
-
-  # Pie chart
-  fig1, ax1 = plt.subplots()
-  ax1.pie(
-      sentiment_df["Count"], labels=sentiment_df["Sentiment"], autopct="%1.1f%%", shadow=True
-  )
-  st.pyplot(fig1)
-
-  # Bar chart
-  fig2, ax2 = plt.subplots(figsize=(5, 3))
-  sns.barplot(x="Sentiment", y="Count", data=sentiment_df)
-  st.pyplot(fig2)
-
-  # Hide progress bar and update text
-  sa_progress_bar.empty()
-  sa_latest_iteration.empty()
+if st.button("Transcribe and Analyze"):
+  uploaded_file = st.file_uploader("Choose an audio file", type=["wav", "mp3"])
+  if uploaded_file is not None:
+    transcribe_and_analyze(uploaded_file)
 
 
 
