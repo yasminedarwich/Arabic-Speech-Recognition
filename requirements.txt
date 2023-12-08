@@ -23,3 +23,5 @@ PyAudio
 backports.tempfile==1.0
 streamlit-audiorecorder==0.0.4
 transformers==4.35.2
+nltk
+wordcloud
