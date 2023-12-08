@@ -14,8 +14,7 @@ import base64
 import seaborn as sns
 from transformers import pipeline
 
-def sentiment_analysis(text): #Performs sentiment analysis on the given text and returns the sentiment distribution.
-    
+def sentiment_analysis(text):
   # Load the sentiment analysis model
   model = pipeline("sentiment-analysis", model="XLM-R-L-ARABIC-SENT")
 
@@ -33,6 +32,7 @@ def sentiment_analysis(text): #Performs sentiment analysis on the given text and
     sentiment_counts[result["label"]] += 1
 
   return sentiment_counts
+
 
 
 # Define a function to reshape Arabic text
@@ -261,20 +261,24 @@ elif page == "Transcription🎤":
 
 sentiment_analysis_checkbox = st.checkbox("Perform Sentiment Analysis")
 
+# Sentiment analysis progress bar and placeholder
+sa_progress_bar = st.progress(0)
+sa_latest_iteration = st.empty()
+
 # Check if sentiment analysis is requested
 if sentiment_analysis_checkbox:
-  # Perform sentiment analysis
+  # Start progress bar and update text
+  sa_latest_iteration.text("Analyzing Sentiment...")
+  sa_progress_bar.progress(0)
+
+  # Perform sentiment analysis on generated text
   sentiment_counts = sentiment_analysis(transcript)
 
-  # Create a data frame from the sentiment counts
-  sentiment_df = pd.DataFrame(
-      data=sentiment_counts.items(), columns=["Sentiment", "Count"]
-  )
+  # Update progress bar and show results
+  sa_progress_bar.progress(100)
+  st.success("Sentiment Analysis Done!")
 
-  # Sort the DataFrame by count
-  sentiment_df = sentiment_df.sort_values(by="Count", ascending=False)
-
-  # Generate visualizations
+  # Create and display visualizations
   st.header("Sentiment Analysis Results")
 
   # Pie chart
@@ -289,8 +293,12 @@ if sentiment_analysis_checkbox:
   sns.barplot(x="Sentiment", y="Count", data=sentiment_df)
   st.pyplot(fig2)
 
+  # Hide progress bar and update text
+  sa_progress_bar.empty()
+  sa_latest_iteration.empty()
 
-   
+
+
 
 elif page == "Analytics📊":
     # This is the Analytics page
