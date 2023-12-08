@@ -135,6 +135,38 @@ elif page == "Transcription🎤":
             try:
                 text = model.audio_to_text_arabic(audio_data)
                 st.success(f"Transcription from uploaded audio: {text}")
+                    transcript = st.text_area("Transcript Text", value = text)
+             # Section to save transcripts
+            st.header("Save Transcripts📥")
+            st.write("Copy and paste the transcription you want to download here:")
+            ###transcript = st.text_area("Transcript Text")
+        
+            # Format options
+            format_option = st.radio("Choose Format", ["Text File", "SRT File", "VTT File"])
+        
+            if st.button("Click To Download⬇️"):
+                if format_option == "Text File":
+                    st.download_button(
+                        label="Download Transcript as Text",
+                        data=transcript,
+                        key="text_file",
+                        file_name="transcript.txt",
+                    )
+                elif format_option == "SRT File":
+                    st.download_button(
+                        label="Download Transcript as SRT",
+                        data=transcript,
+                        key="srt_file",
+                        file_name="transcript.srt",
+                    )
+                elif format_option == "VTT File":
+                    st.download_button(
+                        label="Download Transcript as VTT",
+                        data=transcript,
+                        key="vtt_file",
+                        file_name="transcript.vtt",
+                    )
+
             except sr.UnknownValueError:
                 st.warning("Could not understand audio.")
             except sr.RequestError as e:
