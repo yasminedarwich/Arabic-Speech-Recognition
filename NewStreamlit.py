@@ -12,6 +12,28 @@ import matplotlib.pyplot as plt
 import io
 import base64
 import seaborn as sns
+from transformers import pipeline
+
+def sentiment_analysis(text): #Performs sentiment analysis on the given text and returns the sentiment distribution.
+    
+  # Load the sentiment analysis model
+  model = pipeline("sentiment-analysis", model="XLM-R-L-ARABIC-SENT")
+
+  # Predict the sentiment
+  results = model(text)
+
+  # Count the occurrences of each sentiment label
+  sentiment_counts = {
+    "positive": 0,
+    "neutral": 0,
+    "negative": 0,
+  }
+
+  for result in results:
+    sentiment_counts[result["label"]] += 1
+
+  return sentiment_counts
+
 
 # Define a function to reshape Arabic text
 def reshape_arabic(text):
@@ -236,6 +258,37 @@ elif page == "Transcription🎤":
             st.warning("Could not understand audio.")
         except sr.RequestError as e:
             st.error(f"Could not request results; {e}")
+
+sentiment_analysis_checkbox = st.checkbox("Perform Sentiment Analysis")
+
+# Check if sentiment analysis is requested
+if sentiment_analysis_checkbox:
+  # Perform sentiment analysis
+  sentiment_counts = sentiment_analysis(transcript)
+
+  # Create a data frame from the sentiment counts
+  sentiment_df = pd.DataFrame(
+      data=sentiment_counts.items(), columns=["Sentiment", "Count"]
+  )
+
+  # Sort the DataFrame by count
+  sentiment_df = sentiment_df.sort_values(by="Count", ascending=False)
+
+  # Generate visualizations
+  st.header("Sentiment Analysis Results")
+
+  # Pie chart
+  fig1, ax1 = plt.subplots()
+  ax1.pie(
+      sentiment_df["Count"], labels=sentiment_df["Sentiment"], autopct="%1.1f%%", shadow=True
+  )
+  st.pyplot(fig1)
+
+  # Bar chart
+  fig2, ax2 = plt.subplots(figsize=(5, 3))
+  sns.barplot(x="Sentiment", y="Count", data=sentiment_df)
+  st.pyplot(fig2)
+
 
    
 
