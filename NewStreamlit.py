@@ -122,11 +122,11 @@ elif page == "Transcription🎤":
     # To play audio in frontend:
         st.audio(source.export().read())  
         
-        audio = recognizer.listen(source)   
+    #    audio = recognizer.listen(source)   
      # Transcribe the recorded audio using the model
         try:
             # Use the audio-to-text method from your model
-            text = model.audio_to_text_arabic(audio)
+            text = model.audio_to_text_arabic(source)
             st.success(f"Transcription: {text}")
         except sr.UnknownValueError:
             st.warning("Could not understand audio.")
