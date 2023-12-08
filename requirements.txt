@@ -21,4 +21,4 @@ wavio==0.0.8
 Levenshtein==0.23.0
 PyAudio
 backports.tempfile==1.0
-
+streamlit-audiorecorder==0.0.4
