@@ -1,4 +1,5 @@
 import streamlit as st
+from audiorecorder import audiorecorder
 import speech_recognition as sr
 from tempfile import NamedTemporaryFile
 import pandas as pd
@@ -118,8 +119,7 @@ elif page == "Transcription🎤":
     if st.button("Record an Audio✨"):
 
         # Start recording audio from the microphone
-        with sr.Microphone() as source:
-            st.info("Recording... Speak something!")
+        source = audiorecorder("Click to record", "Click to stop recording")
             audio = recognizer.listen(source)
 
         # Transcribe the recorded audio using the model
