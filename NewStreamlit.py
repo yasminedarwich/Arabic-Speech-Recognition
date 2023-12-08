@@ -116,21 +116,30 @@ elif page == "Transcription🎤":
     model = ArabicTranscriptionModel()
 
     # Add a button to trigger audio recording
-    if st.button("Record an Audio✨"):
+    source = audiorecorder("Click to record", "Click to stop recording") # Start recording audio from the microphone
 
-        # Start recording audio from the microphone
-        source = audiorecorder("Click to record", "Click to stop recording")
-        audio = recognizer.listen(source)
-
-        # Transcribe the recorded audio using the model
+    if len(source) > 0:
+    # To play audio in frontend:
+        st.audio(source.export().read())  
+        
+     # Transcribe the recorded audio using the model
         try:
             # Use the audio-to-text method from your model
-            text = model.audio_to_text_arabic(audio)
+            text = model.audio_to_text_arabic(source.export())
             st.success(f"Transcription: {text}")
         except sr.UnknownValueError:
             st.warning("Could not understand audio.")
         except sr.RequestError as e:
             st.error(f"Could not request results; {e}")
+
+    if st.button("Record an Audio✨"):
+        
+
+        
+        
+        audio = recognizer.listen(source)
+
+       
 
 
     # Section for Calculating Transcription Cost
