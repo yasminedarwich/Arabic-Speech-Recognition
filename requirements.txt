@@ -25,3 +25,4 @@ streamlit-audiorecorder==0.0.4
 transformers==4.35.2
 nltk
 wordcloud
+textblob
