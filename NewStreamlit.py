@@ -122,7 +122,7 @@ elif page == "Transcription🎤":
     # To play audio in frontend:
         st.audio(source.export().read())  
         
-        audio = recognizer.listen(source.export().read())   
+        audio = recognizer.listen(source)   
      # Transcribe the recorded audio using the model
         try:
             # Use the audio-to-text method from your model
