@@ -246,7 +246,7 @@ elif page == "Analytics📊":
     # Load your data, assuming you have the data loaded into the 'df1' DataFrame
     #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/date_posted.csv
      #Load your data, assuming you have the data loaded into the 'df1' DataFrame
-    df1 = pd.read_csv("https://drive.google.com/file/d/1sieMl2oybGYdz61EqSqD-i-ugoKLlKCM/view?usp=drive_link")
+    df1 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/date_posted.csv")
 
     # Convert 'date_posted' to datetime if it's not already
     df1['date_posted'] = pd.to_datetime(df1['date_posted'])
