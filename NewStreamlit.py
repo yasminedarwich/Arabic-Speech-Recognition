@@ -246,7 +246,7 @@ elif page == "Analytics📊":
     # Load your data, assuming you have the data loaded into the 'df1' DataFrame
     #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/date_posted.csv
      #Load your data, assuming you have the data loaded into the 'df1' DataFrame
-    df1 = pd.read_csv("C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/date_posted.csv")
+    df1 = pd.read_csv("https://github.com/yasminedarwich/Arabic-Speech-Recognition/tree/main/EDA_Local/date_posted.csv")
 
     # Convert 'date_posted' to datetime if it's not already
     df1['date_posted'] = pd.to_datetime(df1['date_posted'])
@@ -271,7 +271,7 @@ elif page == "Analytics📊":
     st.plotly_chart(fig1)
 
     ###########C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/episodesWithMostLikes.csv
-    df2 = pd.read_csv("C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/episodesWithMostLikes.csv")
+    df2 = pd.read_csv("https://github.com/yasminedarwich/Arabic-Speech-Recognition/tree/main/EDA_Local/episodesWithMostLikes.csv")
 
     # Sort the DataFrame by likes_count in descending order and select the top 10 rows
     df2 = df2.sort_values(by="likes_count", ascending=False).head(10)
@@ -303,7 +303,7 @@ elif page == "Analytics📊":
     st.pyplot(fig2)
 
     #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10LeastPopularPodcasts.csv
-    df3 = pd.read_csv('C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10LeastPopularPodcasts.csv')
+    df3 = pd.read_csv('https://github.com/yasminedarwich/Arabic-Speech-Recognition/tree/main/EDA_Local/top10LeastPopularPodcasts.csv')
 
     # Sort the DataFrame by 'likes_count' in ascending order
     df3 = df3.sort_values(by='likes_count', ascending=True)
@@ -335,7 +335,7 @@ elif page == "Analytics📊":
 
     #####C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10MostPopularAuthors.csv
     # 
-    df3 = pd.read_csv("C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10MostPopularAuthors.csv")
+    df3 = pd.read_csv("https://github.com/yasminedarwich/Arabic-Speech-Recognition/tree/main/EDA_Local/top10MostPopularAuthors.csv")
 
     # Reshape the Arabic words to show correctly
     x = df3['author'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
@@ -367,7 +367,7 @@ elif page == "Analytics📊":
     st.pyplot(fig3)
 
     ######C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10LeastPopularAuthors.csv
-    df4 = pd.read_csv('C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10LeastPopularAuthors.csv')
+    df4 = pd.read_csv('https://github.com/yasminedarwich/Arabic-Speech-Recognition/tree/main/EDA_Local/top10LeastPopularAuthors.csv')
 
     # Sort the DataFrame by 'likes_count' in ascending order
     df4 = df4.sort_values(by='likes_count', ascending=True)
@@ -393,7 +393,7 @@ elif page == "Analytics📊":
     
     #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/categoriesCount.csv
 
-    df5 = pd.read_csv('C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/categoriesCount.csv')
+    df5 = pd.read_csv('https://github.com/yasminedarwich/Arabic-Speech-Recognition/tree/main/EDA_Local/categoriesCount.csv')
 
     # Calculate the total count of categories
     total_count = df5['category_count'].sum()
@@ -416,7 +416,7 @@ elif page == "Analytics📊":
     st.plotly_chart(fig5)
     #
     #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/Newest podcasts.csv
-    df6 = pd.read_csv("C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/Newest podcasts.csv")
+    df6 = pd.read_csv("https://github.com/yasminedarwich/Arabic-Speech-Recognition/tree/main/EDA_Local/Newest podcasts.csv")
 
     # Reshape Arabic words to display correctly
     df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
@@ -438,7 +438,7 @@ elif page == "Analytics📊":
 
     #
     #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/oldestPodcasts.csv
-    df7 = pd.read_csv("C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/oldestPodcasts.csv")
+    df7 = pd.read_csv("https://github.com/yasminedarwich/Arabic-Speech-Recognition/tree/main/EDA_Local/oldestPodcasts.csv")
 
     # Reshape Arabic words to display correctly
     df7['name'] = df7['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
