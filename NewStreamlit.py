@@ -119,7 +119,7 @@ elif page == "Transcription🎤":
     if st.button("Record an Audio✨"):
 
         # Start recording audio from the microphone
-        source = audiorecorder("Click to record", "Click to stop recording")
+    source = audiorecorder("Click to record", "Click to stop recording")
             audio = recognizer.listen(source)
 
         # Transcribe the recorded audio using the model
