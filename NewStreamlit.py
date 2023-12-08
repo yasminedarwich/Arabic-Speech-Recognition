@@ -118,7 +118,7 @@ elif page == "Transcription🎤":
     # Add a button to trigger audio recording
     micAudio = audiorecorder("Click to record", "Click to stop recording") # Start recording audio from the microphone
 
-    if len(source) > 0:
+    if len(micAudio) > 0:
     # To play audio in frontend:
         st.audio(micAudio.export().read())  
         
