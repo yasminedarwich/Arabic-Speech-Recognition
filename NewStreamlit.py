@@ -126,10 +126,10 @@ if page == "Home💫":
 
    
 
-elif page == "Transcription🎤":
+elif page == "Transcription 🎤":
     # This is the transcription page
     # Section for Recording Audio
-    st.header("Record Audio🎤")
+    st.header("Record Audio 🎤")
 
     # Create a SpeechRecognition recognizer
     recognizer = sr.Recognizer()
@@ -159,14 +159,14 @@ elif page == "Transcription🎤":
                 st.success(f"Transcription from uploaded audio: {text}")
                 transcript = st.text_area("Transcript Text", value = text)
                  # Section to save transcripts
-                st.header("Save Transcripts📥")
+                st.header("Save Transcripts 📥")
                 st.write("Copy and paste the transcription you want to download here:")
                 ###transcript = st.text_area("Transcript Text")
             
                 # Format options
                 format_option = st.radio("Choose Format", ["Text File", "SRT File", "VTT File"])
             
-                if st.button("Click To Download⬇️"):
+                if st.button("Click To Download ⬇️"):
                     if format_option == "Text File":
                         st.download_button(
                             label="Download Transcript as Text",
@@ -200,14 +200,14 @@ elif page == "Transcription🎤":
 
 
     # Section for Calculating Transcription Cost
-    st.header("Transcription Cost💰")
+    st.header("Transcription Cost 💰")
     # Mention the transcription cost per minute
     st.write("The transcription cost is $2.65 per minute.")
 
 
 
     # Section for Uploading Audio Files
-    st.header("Upload Audio File📤")
+    st.header("Upload an Audio File 📤")
 
     # Add an option to upload an audio file
     uploaded_file = st.file_uploader("Choose an audio file to upload", type=["wav", "mp3", "ogg"])
@@ -225,14 +225,14 @@ elif page == "Transcription🎤":
             st.success(f"Transcription from uploaded audio: {text}")
             transcript = st.text_area("Transcript Text", value = text)
              # Section to save transcripts
-            st.header("Save Transcripts📥")
+            st.header("Save Transcripts 📥")
             st.write("Copy and paste the transcription you want to download here:")
             ###transcript = st.text_area("Transcript Text")
         
             # Format options
             format_option = st.radio("Choose Format", ["Text File", "SRT File", "VTT File"])
         
-            if st.button("Click To Download⬇️"):
+            if st.button("Click To Download ⬇️"):
                 if format_option == "Text File":
                     st.download_button(
                         label="Download Transcript as Text",
@@ -261,7 +261,7 @@ elif page == "Transcription🎤":
 
 
 
-elif page == "Analytics📊":
+elif page == "Analytics 📊":
     # This is the Analytics page
     st.title("Podeo Podcasts Analysis")
 
@@ -480,17 +480,8 @@ elif page == "Analytics📊":
     st.title("Oldest 10 Podcasts")
     st.pyplot(fig7)
 
-    # Load your dataset into a DataFrame (replace 'your_dataset.csv' with the actual filename)
-    ##C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/episodes_creators.csv
-    #df8 = pd.read_csv('C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/episodes_creators.csv')
-    
 
     
-
-# Run the app
-
-
-
-####################
-##################
+############
+########
 ##you should run "streamlit run NewStreamlit.py
