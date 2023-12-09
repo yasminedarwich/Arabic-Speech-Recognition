@@ -76,6 +76,16 @@ st.markdown(
 )
 
 # Create a Streamlit app
+# Create columns
+col1, col2 = st.columns(2)  # Two columns with equal width
+
+# Add image to first column
+with col1:
+    st.image("podeo-logo-english-white.png", width=300)
+
+# Add title to second column
+with col2:
+    st.title("Audio-Transcription App")
 
 # Create a sidebar for navigation
 st.sidebar.title("Hey there! 👋🏻")
