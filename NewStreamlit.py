@@ -76,6 +76,16 @@ st.markdown(
 )
 
 # Create a Streamlit app
+
+# Read the image as a NumPy array
+image = st.cache(lambda: np.array(Image.open("podeo-logo-english-white.png")))
+
+# Reduce the image size by half
+resized_image = cv2.resize(image, (0, 0), fx=0.5, fy=0.5)
+
+# Display the resized image
+st.image(resized_image)
+
 st.image("podeo-logo-english-white.png")
 st.title("Podeo Audio-Transcription App")
 
