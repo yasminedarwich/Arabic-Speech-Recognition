@@ -12,38 +12,6 @@ import matplotlib.pyplot as plt
 import io
 import base64
 import seaborn as sns
-from transformers import pipeline
-import nltk
-from textblob import TextBlob
-from nltk.corpus import stopwords
-
-# Download NLTK resources
-nltk.download('punkt')
-nltk.download('stopwords')
-
-# Function to preprocess text
-def preprocess(text):
-  # Lowercase text
-  text = text.lower()
-  # Remove punctuation
-  text = ''.join([c for c in text if not c.isalnum() and c != " "])
-  # Tokenize text
-  words = nltk.word_tokenize(text)
-  # Remove stop words
-  words = [word for word in words if word.lower() not in stopwords.words('arabic')]
-  return ' '.join(words)
-
-# Function to perform sentiment analysis
-def analyze_sentiment(text):
-  # Preprocess the text
-  preprocessed_text = preprocess(text)
-  # Create TextBlob object
-  blob = TextBlob(preprocessed_text)
-  # Analyze sentiment
-  sentiment = blob.sentiment
-  return sentiment.polarity, sentiment.subjectivity
-
-
 
 # Define a function to reshape Arabic text
 def reshape_arabic(text):
@@ -268,24 +236,6 @@ elif page == "Transcription🎤":
             st.warning("Could not understand audio.")
         except sr.RequestError as e:
             st.error(f"Could not request results; {e}")
-
-def transcribe_and_analyze(audio_file):
-  # Transcribe the audio
-  transcript = transcribe_audio(audio_file)
-
-  # Perform sentiment analysis
-  polarity, subjectivity = analyze_sentiment(transcript)
-
-  # Display results
-  st.write(f"Transcript: {transcript}")
-  st.write(f"Sentiment Polarity: {polarity}")
-  st.write(f"Sentiment Subjectivity: {subjectivity}")
-
-if st.button("Transcribe and Analyze"):
-  uploaded_file = st.file_uploader("Choose an audio file", type=["wav", "mp3"])
-  if uploaded_file is not None:
-    transcribe_and_analyze(uploaded_file)
-
 
 
 
