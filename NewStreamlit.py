@@ -101,10 +101,6 @@ with st.sidebar:
 
     [LinkedIn](https://www.linkedin.com/in/yasmine-darwich/)
 
-    [Twitter](https://twitter.com/DonaLeb_)
-
-    [Instagram](https://www.instagram.com/dona.leb/)
-
     ''')
     st.write("---")
     
