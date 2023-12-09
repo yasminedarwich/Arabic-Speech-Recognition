@@ -102,8 +102,8 @@ if page == "Home💫":
 
     # Add images, GIFs, or any content you want to display on the introduction page
     col1, col2, col3 = st.columns([0.2, 0.6, 0.2])
-with col2:
-    st.image("Podcastcaptions.png")
+    with col2:
+        st.image("Podcastcaptions.png")
 
    
 
