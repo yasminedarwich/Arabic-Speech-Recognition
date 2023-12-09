@@ -86,7 +86,7 @@ with col1:
 
 # Add title to second column
 with col2:
-    st.title("Audio-Transcription App", width=500)
+    st.title("Audio-Transcription App")
 
 # Create a sidebar for navigation
 st.sidebar.title("Menu")
