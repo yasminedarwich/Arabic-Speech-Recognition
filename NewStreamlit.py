@@ -89,6 +89,20 @@ with col2:
     st.title("Audio-Transcription App")
 
 # Create a sidebar for navigation
+with st.sidebar:
+    st.write('''
+    Hey there! 👋🏻 
+
+    I am Yasmine Darwich, an MSBA student at AUB 👱‍♀️🏫! 
+
+    I enjoy working with datasets and analyzing information 🎯. 
+    
+    Let's connect:
+
+    [LinkedIn](https://www.linkedin.com/in/yasmine-darwich/)
+
+    ''')
+
 st.sidebar.title("Menu")
 page = st.sidebar.radio("Select a Page", ["Home💫", "Transcription🎤", "Analytics📊"])
 
