@@ -90,8 +90,7 @@ with col2:
 # Create a sidebar for navigation
 st.sidebar.title("Hey there! 👋🏻")
 with st.sidebar:
-    st.write('''
-    Hey there! 👋🏻 
+    st.write(''
 
     I am Yasmine Darwich, an MSBA student at AUB 👱‍♀️🏫! 
 
@@ -101,7 +100,7 @@ with st.sidebar:
 
     [LinkedIn](https://www.linkedin.com/in/yasmine-darwich/)
 
-    ''')
+    '')
     st.write("---")
     
 page = st.sidebar.radio("Select a Page", ["Home💫", "Transcription🎤", "Analytics📊"])
