@@ -79,6 +79,17 @@ st.markdown(
 st.image("podeo-logo-english-white.png", width=300)
 st.title("Podeo Audio-Transcription App")
 
+# Create columns
+col1, col2 = st.columns(2)  # Two columns with equal width
+
+# Add image to first column
+with col1:
+    st.image("podeo-logo-english-white.png", width=300)
+
+# Add title to second column
+with col2:
+    st.title("Podeo Audio-Transcription App")
+
 # Create a sidebar for navigation
 st.sidebar.title("Menu")
 page = st.sidebar.radio("Select a Page", ["Home💫", "Transcription🎤", "Analytics📊"])
@@ -101,8 +112,8 @@ if page == "Home💫":
     )
 
     # Add images, GIFs, or any content you want to display on the introduction page
-    col1, col2, col3 = st.columns([0.2, 0.6, 0.2])
-    with col2:
+    col3, col4, col4 = st.columns([0.2, 0.6, 0.2])
+    with col4:
         st.image("Podcastcaptions.png", width = 500)
 
    
