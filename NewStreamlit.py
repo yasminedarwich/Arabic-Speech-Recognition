@@ -91,7 +91,9 @@ with col2:
 st.sidebar.title("Hey there! 👋🏻")
 with st.sidebar:
     st.write('''I am Yasmine Darwich, an MSBA graduate at AUB 👱‍♀️🏫! 
+    
     I enjoy working with datasets and analyzing information 🎯. 
+    
     [LinkedIn](https://www.linkedin.com/in/yasmine-darwich/)
     ''')
     
