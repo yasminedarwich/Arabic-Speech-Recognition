@@ -94,18 +94,17 @@ page = st.sidebar.radio("Select a Page", ["Home💫", "Transcription🎤", "Anal
 
 if page == "Home💫":
     # This is the introduction page
-    st.title("Welcome to Podeo Transcription App")
     st.markdown(
         """
         Podeo is the Arab World's largest podcasting platform, dedicated to managing, distributing, and producing audio podcasts that reach millions of listeners.
 
         With this app, you can easily transcribe your audio recordings. You have two options:
-        1. Record Audio🎤: Click the "Generate Transcripts✨" button, speak into your microphone, and let the app transcribe your speech.
-        2. Upload Audio File📤: Upload an audio file in formats like WAV, MP3, or OGG, and get it transcribed instantly.
+        1. Record Audio 🎤: Click the "Generate Transcripts✨" button, speak into your microphone, and let the app transcribe your speech.
+        2. Upload Audio File 📤: Upload an audio file in formats like WAV, MP3, or OGG, and get it transcribed instantly.
 
         After transcription, you can save the text in various formats like Text File, SRT, or VTT. Click "Click To Download⬇️" to save your transcript.
 
-        Enjoy seamless transcription with Podeo Audio-Transcription App!
+        Enjoy seamless transcription with the Podeo Audio-Transcription App!
         """
     )
 
