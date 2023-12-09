@@ -76,7 +76,7 @@ st.markdown(
 )
 
 # Create a Streamlit app
-st.image("podeoCapture.PNG")
+st.image("podeo-logo-english-white.png")
 st.title("Podeo Audio-Transcription App")
 
 # Create a sidebar for navigation
