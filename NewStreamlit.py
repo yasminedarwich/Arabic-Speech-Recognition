@@ -81,28 +81,13 @@ st.markdown(
 st.sidebar.title("Hey there! 👋🏻")
 with st.sidebar:
     st.write('''I am Yasmine Darwich, an MSBA graduate at AUB 👱‍♀️🏫! 
-
     I enjoy working with datasets and analyzing information 🎯. 
-    
     [LinkedIn](https://www.linkedin.com/in/yasmine-darwich/)
     ''')
     
 page = st.sidebar.radio("Select a Page", ["Home💫", "Transcription🎤", "Analytics📊"])
 
 if page == "Home💫":
-
-    
-
-# Create columns
-col1, col2 = st.columns(2)  # Two columns with equal width
-
-# Add image to first column
-with col1:
-    st.image("podeo-logo-english-white.png", width=300)
-
-# Add title to second column
-with col2:
-    st.title("Audio-Transcription App")
     
     # This is the introduction page
     st.markdown(
