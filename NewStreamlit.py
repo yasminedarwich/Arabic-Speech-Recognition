@@ -89,12 +89,10 @@ with col2:
     st.title("Audio-Transcription App")
 
 # Create a sidebar for navigation
-st.sidebar.title("Menu")
+st.sidebar.title("Hey there! 👋🏻")
 with st.sidebar:
     st.write('''
-    Hey there! 👋🏻 
-
-    I am Yasmine Darwich, an MSBA student at AUB 👱‍♀️🏫! 
+    I am Yasmine Darwich, an MSBA graduate at AUB 👱‍♀️🏫! 
 
     I enjoy working with datasets and analyzing information 🎯. 
     
