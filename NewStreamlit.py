@@ -101,7 +101,7 @@ if page == "Home💫":
     )
 
     # Add images, GIFs, or any content you want to display on the introduction page
-    st.image("Capture34.PNG", caption="Image2")
+    st.image("Podcastcaptions.png")
    
 
 elif page == "Transcription🎤":
