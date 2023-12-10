@@ -76,16 +76,8 @@ st.markdown(
 )
 
 # Create a Streamlit app
-# Create columns
-col1, col2 = st.columns(2)  # Two columns with equal width
-
-# Add image to first column
-with col1:
-    st.image("podeo-logo-english-white.png", width=300)
-
-# Add title to second column
-with col2:
-    st.title("Audio-Transcription App")
+st.image("podeoCapture.PNG")
+st.title("Podeo Audio-Transcription App")
 
 # Create a sidebar for navigation
 st.sidebar.title("Hey there! 👋🏻")
@@ -119,7 +111,9 @@ if page == "Home💫":
     )
 
     # Add images, GIFs, or any content you want to display on the introduction page
-    st.image("Podcastcaptions.png")
+    col3, col4, col5 = st.columns([0.2, 0.6, 0.2])
+    with col4:
+        st.image("Podcastcaptions.png")
 
 elif page == "Transcription 🎤":
     # This is the transcription page
