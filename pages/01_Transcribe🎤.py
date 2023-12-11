@@ -84,9 +84,6 @@ with col1:
 with col2:
     st.title("Audio-Transcription App")
 
-# Create a sidebar for navigation
-st.sidebar.title("Hey there! 👋🏻")
-
 
 # This is the transcription page
 
