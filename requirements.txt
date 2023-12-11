@@ -27,3 +27,4 @@ nltk
 wordcloud
 textblob
 streamlit_card
+farasapy==0.0.14
