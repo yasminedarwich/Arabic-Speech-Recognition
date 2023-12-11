@@ -243,8 +243,8 @@ def display_category_card(category, info):
             image=info["background"],
             styles={
                 "card": {
-                    "width": "300px",
-                    "height": "300px",
+                    "width": "150px",
+                    "height": "150px",
                     "border-radius": "20px"
                 },
                 "title": {
