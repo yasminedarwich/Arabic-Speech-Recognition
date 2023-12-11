@@ -76,13 +76,7 @@ st.markdown(
 )
 
 # Create a Streamlit app
-col1, col2 = st.columns(2)  # Two columns with equal width
-with col1:
-    st.image("podeo-logo-english-white.png", width=300)
-
-# Add title to second column
-with col2:
-    st.title("Audio-Transcription App")
+st.image("automatic.png")
 
 
 # This is the transcription page
