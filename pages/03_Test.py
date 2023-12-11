@@ -243,7 +243,7 @@ def display_category_card(category, info):
     with st.container():
         hasClicked = card(
             title=f"{info['icon']} {category}",
-            text=""
+            text="",
             image=info["background"],
         )
 
