@@ -166,7 +166,6 @@ fig = go.Figure(go.Sunburst(labels=sunburst_df['labels'], parents=sunburst_df['p
 # Set layout properties for better aesthetics
 fig.update_layout(
     margin=dict(t=0, l=0, r=0, b=0),
-    title_text='Category Distribution',
     sunburstcolorway=["#636efa", "#ef553b", "#00cc96", "#ab63fa", "#FFA07A", "#FFD700", "#20B2AA", "#FF4500", "#7FFF00"],
 )
 
