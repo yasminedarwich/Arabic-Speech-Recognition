@@ -241,6 +241,12 @@ def display_category_card(category, info):
             title=f"{info['icon']} {category}",
             text="",
             image=info["background"],
+            styles={
+        "card": {
+            "width": "100px",
+            "height": "100px",
+            "border-radius": "60px",
+        }
         )
 
 # Create 4 columns
