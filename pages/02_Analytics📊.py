@@ -246,12 +246,12 @@ total_count = df5['category_count'].sum()
 # Calculate the category percentages
 df5['Category_Percentage'] = (df5['category_count'] / total_count) * 100
 
-# Create an interactive pie chart using Plotly for the category breakdown
-fig5 = px.pie(
-    df5,
-    values='Category_Percentage',
-    names='name',
-    title='Top Categories Listened To',
+# Create the pie chart
+st.pie_chart(
+    data=df5,
+    labels=df5['namecategory'],
+    values=df5['Category_Percentage'],
+    label_format="%1.1f%%",
 )
 
 # Customize the layout for better interaction
