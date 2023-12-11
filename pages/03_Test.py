@@ -176,7 +176,6 @@ st.plotly_chart(fig)
 
 ############
 
-
 import streamlit as st
 import pandas as pd
 from bidi.algorithm import get_display
@@ -191,13 +190,8 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False).head(10)
 
-# Display the newest podcasts using markdown
+# Display the newest podcasts using st.info
 st.title("Newest 10 Podcasts")
 
 for index, row in df6.iterrows():
-    st.markdown(
-        f"**{row['name']}**\n\n"
-        f"Date Posted: {row['date_posted']}\n"
-        f"Rank: {row['Rank']}",
-        unsafe_allow_html=True
-    )
+    st.info(f"**{row['name']}**")
