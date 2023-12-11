@@ -97,8 +97,6 @@ st.sidebar.write('''
     [LinkedIn](https://www.linkedin.com/in/yasmine-darwich/)
 
     ''')
-page = st.sidebar.radio("Select a Page", ["Home💫", "Transcription🎤", "Analytics📊"])
-
 
 st.markdown(
         """
