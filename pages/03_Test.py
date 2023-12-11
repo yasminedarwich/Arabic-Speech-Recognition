@@ -19,15 +19,13 @@ font_path = "https://github.com/yasminedarwich/Arabic-Speech-Recognition/blob/ma
 # Cache the font loading operation for better performance
 @st.cache
 def load_font():
-    st.markdown(f'<style>div {{ font-family: "ArabicFont", sans-serif; }}</style>', unsafe_allow_html=True)
+    pass  # Placeholder function; no Streamlit functions should be called inside this function
 
 # Load the font
 load_font()
 
-# Your Streamlit app content goes here
-st.title("Streamlit with Arabic Font")
-st.write("تجربة استخدام اللغة العربية في Streamlit")
-
+# Set the Arabic font using st.markdown() outside the cached function
+st.markdown(f'<style>div {{ font-family: "ArabicFont", sans-serif; }}</style>', unsafe_allow_html=True)
 
 # Define a function to reshape Arabic text
 def reshape_arabic(text):
