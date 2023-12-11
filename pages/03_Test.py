@@ -127,7 +127,7 @@ else:
     st.stop()
 
 # Display authors in two rows with 5 columns on each row
-row1, row2 = st.beta_columns(2)
+row1, row2 = st.columns(2)
 
 for index, row in df3.iterrows():
     if index < 5:
