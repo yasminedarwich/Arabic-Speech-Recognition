@@ -229,7 +229,7 @@ title_styles = {
 }
 
 # Create two rows of cards
-row1, row2 = st.beta_columns(2)
+row1, row2 = st.columns(2)
 
 for index, name in enumerate(podcast_names):
     card_html = custom_card(name, {"card": card_styles, "title": title_styles})
