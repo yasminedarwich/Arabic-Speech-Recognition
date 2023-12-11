@@ -154,6 +154,8 @@ import plotly.graph_objects as go
 # Read the CSV file
 df5 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/categoriesCount.csv?token=GHSAT0AAAAAACKRHIALMFXA76ZBY6N4VNXUZLWM7KQ')
 
+st.title("Most Popular Catgories")
+
 # Create a hierarchical structure for sunburst chart
 sunburst_data = {'labels': df5['name'], 'parents': [''] * len(df5), 'values': df5['category_count']}
 sunburst_df = pd.DataFrame(sunburst_data)
