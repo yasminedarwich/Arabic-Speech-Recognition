@@ -213,3 +213,5 @@ if uploaded_file is not None:
         st.warning("Could not understand audio.")
     except sr.RequestError as e:
         st.error(f"Could not request results; {e}")
+
+st.image(Setup-Pc.png)
