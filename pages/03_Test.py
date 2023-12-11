@@ -149,22 +149,21 @@ for index, row in df3.iterrows():
 
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import plotly.graph_objects as go
 
 # Read the CSV file
 df5 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/categoriesCount.csv?token=GHSAT0AAAAAACKRHIALMFXA76ZBY6N4VNXUZLWM7KQ')
 
-# Calculate the total count of categories
-total_count = df5['category_count'].sum()
+# Create a hierarchical structure for sunburst chart
+sunburst_data = {'labels': df5['name'], 'parents': [''] * len(df5), 'values': df5['category_count']}
+sunburst_df = pd.DataFrame(sunburst_data)
 
-# Calculate the category percentages
-df5['Category_Percentage'] = (df5['category_count'] / total_count) * 100
-
-# Create a sunburst chart using Plotly Express
-fig = px.sunburst(df5, path=['namecategory'], values='Category_Percentage', title='Category Distribution')
+# Create the sunburst chart using Plotly
+fig = go.Figure(go.Sunburst(labels=sunburst_df['labels'], parents=sunburst_df['parents'], values=sunburst_df['values']))
 
 # Set layout properties for better aesthetics
-fig.update_layout(margin=dict(t=0, l=0, r=0, b=0), paper_bgcolor="white")
+fig.update_layout(margin=dict(t=0, l=0, r=0, b=0), title='Category Distribution')
 
-# Display the Plotly Express sunburst chart in Streamlit
+# Display the Plotly sunburst chart in Streamlit
 st.plotly_chart(fig)
+
