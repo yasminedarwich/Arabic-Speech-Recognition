@@ -239,12 +239,18 @@ def display_category_card(category, info):
     with st.container():
         hasClicked = card(
             title=f"{info['icon']} {category}",
-            text="", image=info["background"],
+            text="", 
+            image=info["background"],
             styles={
-        "card": {
-            "width": "300px",
-            "height": "300px",
-            "border-radius": "20px"}}
+                "card": {
+                    "width": "300px",
+                    "height": "300px",
+                    "border-radius": "20px"
+                },
+                "title": {
+                    "font-size": "14px"  # Adjust the font size as needed
+                }
+            }
         )
 
 # Create 4 columns
@@ -257,3 +263,4 @@ for i, (category, info) in enumerate(categories_info.items()):
     # Display the card in the appropriate column
     with columns[col_index]:
         display_category_card(category, info)
+
