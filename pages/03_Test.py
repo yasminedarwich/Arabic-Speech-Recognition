@@ -77,10 +77,9 @@ st.markdown(
 
 ###########
 
-
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
+import plotly.express as px
 from bidi.algorithm import get_display
 import arabic_reshaper
 
@@ -99,20 +98,11 @@ data = pd.DataFrame({'episodes': df2['name'], 'likes': df2['likes_count']})
 # Sort the DataFrame by likes_count in descending order
 data = data.sort_values(by="likes", ascending=True)
 
-# Create a horizontal bar chart using Matplotlib
-fig, ax = plt.subplots(figsize=(10, 6))
-bars = ax.barh(data['episodes'], data['likes'], color='skyblue')
+# Create an interactive horizontal bar chart using Plotly Express
+fig = px.bar(data, x='likes', y='episodes', orientation='h', text='likes', title="Top 10 Most Popular Podcasts")
+fig.update_layout(xaxis_title="Number of Likes", yaxis_title="Episode")
+fig.update_traces(marker_color='skyblue')
 
-# Annotate each bar with the number of likes
-for bar, like in zip(bars, data['likes']):
-    ax.text(like, bar.get_y() + bar.get_height() / 2, str(like), va='center', color='blue')
-
-# Customize the plot
-ax.set_xlabel("Number of Likes")
-ax.set_ylabel("Episode")
-ax.set_title("Top 10 Most Popular Podcasts")
-ax.invert_yaxis()  # To display the episodes in descending order
-
-# Display the Matplotlib plot in Streamlit
-st.pyplot(fig)
+# Display the Plotly Express plot in Streamlit
+st.plotly_chart(fig)
 
