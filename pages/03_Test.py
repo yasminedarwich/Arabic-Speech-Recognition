@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 import arabic_reshaper
+from arabic_reshaper import reshape
 from bidi.algorithm import get_display
 import matplotlib.pyplot as plt
 import io
