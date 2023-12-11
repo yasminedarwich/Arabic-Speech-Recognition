@@ -77,11 +77,12 @@ st.markdown(
 
 # Create a Streamlit app
 
-# Create a centered container
-container = st.container()
+# Create a three-column layout
+col1, col2, col3 = st.columns(3)
 
-# Add the image to the container with specified width
-container.image("automatic.png", width=800)
+# Place the image in the middle column
+col2.image("automatic.png", width=800)
+
 
 
 # This is the transcription page
