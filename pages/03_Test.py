@@ -190,9 +190,16 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False).head(10)
 
-# Display the newest podcasts using st.info
+# Display the newest podcasts in cards with scrolling
 st.title("Newest 10 Podcasts")
 
-for index, row in df6.iterrows():
-    st.info(f"**{row['name']}**")
+# Configure the layout to have a horizontal scroll
+st.markdown("<style>div.row-widget.stHorizontal {flex-direction: row;}</style>", unsafe_allow_html=True)
 
+# Create a row of cards using st.columns
+row = st.columns(len(df6))
+
+for index, (column, row_data) in enumerate(zip(row, df6.iterrows())):
+    _, row = row_data
+    with column:
+        st.info(f"**{row['name']}**")
