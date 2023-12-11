@@ -127,6 +127,12 @@ bottom_10_episodes = df3.head(10)
 # Reshape the Arabic words to show correctly
 bottom_10_episodes['reshaped_name'] = [get_display(arabic_reshaper.reshape(item)) for item in bottom_10_episodes['name']]
 
-# Display the top 10 least popular podcasts in a table
-st.table(bottom_10_episodes[['reshaped_name', 'likes_count']].reset_index(drop=True))
+# Display the top 10 least popular podcasts using cards
+for index, row in bottom_10_episodes.iterrows():
+    st.write(
+        f"**Episode Name:** {row['reshaped_name']}\n"
+        f"**Likes Count:** {row['likes_count']}\n"
+        "----------------------"
+    )
+
 
