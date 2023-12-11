@@ -75,12 +75,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Create a Streamlit app
-with col1:
-    st.image("podeo-logo-english-white.png", width=300)
-
-# Add title to second column
-with col2:
-    st.title("Audio-Transcription App")
+###########
 
 
