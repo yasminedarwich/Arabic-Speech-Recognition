@@ -108,7 +108,7 @@ likes = df2["likes_count"]
 episodes = x
 
 # Create a horizontal bar chart of the number of likes for the top 10 episodes using Matplotlib
-fig2, ax = plt.subplots(figsize=(10, 6), facecolor='none')
+fig2, ax = plt.subplots(figsize=(10, 6))
 
 # Create the bar chart
 bars = ax.barh(episodes, likes, color='skyblue')
