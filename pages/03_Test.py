@@ -139,5 +139,3 @@ for index, row in bottom_10_episodes.iterrows():
         f"**Likes Count:** {row['likes_count']}\n"
         "----------------------"
     )
-
-    )
