@@ -76,7 +76,14 @@ st.markdown(
 )
 
 # Create a Streamlit app
-st.image("automatic.png", width=300)
+st.markdown(
+    """
+    <div style='text-align: center;'>
+        <img src="automatic.png" alt="Image" width=800>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
 # This is the transcription page
