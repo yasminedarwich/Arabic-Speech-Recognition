@@ -178,7 +178,7 @@ st.plotly_chart(fig)
 
 from streamlit_card import card
 
-st.title("Streamlit Card - test")
+st.title("Newest Podcasts")
 
 res = card(
     title="Streamlit Card",
