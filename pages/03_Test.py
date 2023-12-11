@@ -126,13 +126,18 @@ else:
     st.error("Column 'author' not found in the DataFrame. Please adjust the column name.")
     st.stop()
 
-# Display authors in two rows with 5 cards on each row
-st.write('<div style="display: flex;">', unsafe_allow_html=True)
+# Display authors in two rows with 5 columns on each row
+row1, row2 = st.beta_columns(2)
+
 for index, row in df3.iterrows():
-    st.write(
-        f'<div style="flex: 1; margin: 10px; padding: 15px; border: 1px solid #ddd; text-align: center;">'
-        f'{row["reshaped_author"]}'
-        f'</div>', unsafe_allow_html=True)
-    if index == 4:
-        st.write('</div><div style="display: flex;">', unsafe_allow_html=True)
-st.write('</div>', unsafe_allow_html=True)
+    if index < 5:
+        row1.write(
+            f'<div style="margin: 10px; padding: 15px; border: 1px solid #ddd; text-align: center;">'
+            f'{row["reshaped_author"]}'
+            f'</div>', unsafe_allow_html=True)
+    else:
+        row2.write(
+            f'<div style="margin: 10px; padding: 15px; border: 1px solid #ddd; text-align: center;">'
+            f'{row["reshaped_author"]}'
+            f'</div>', unsafe_allow_html=True)
+
