@@ -91,6 +91,40 @@ load_font()
 st.markdown(f'<style>div {{ font-family: "ArabicFont", sans-serif; }}</style>', unsafe_allow_html=True)
 
 
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+import arabic_reshaper
+from bidi.algorithm import get_display
+
+# Load data
+df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/episodesWithMostLikes.csv?token=GHSAT0AAAAAACKRHIALIWMTB3F6KSEGETVEZLWM6MA")
+
+# Sidebar for user interaction
+st.sidebar.title("Top 10 Podcasts Configuration")
+num_episodes = st.sidebar.slider("Number of episodes to display", min_value=1, max_value=len(df2), value=10)
+
+# Process data
+df2 = df2.sort_values(by="likes_count", ascending=False).head(num_episodes)
+x = [get_display(arabic_reshaper.reshape(item)) for item in df2.name.values]
+likes = df2["likes_count"]
+episodes = x
+
+# Plotting
+fig2, ax = plt.subplots(figsize=(10, 6))
+bars = ax.barh(episodes, likes, color='skyblue')
+
+for bar, like in zip(bars, likes):
+    ax.text(like, bar.get_y() + bar.get_height() / 2, str(like), va='center', color='blue')
+
+ax.set_xlabel("Number of Likes")
+ax.set_ylabel("Episode")
+ax.set_title(f"Top {num_episodes} Most Popular Podcasts")
+ax.invert_yaxis()
+
+# Display the plot in Streamlit
+st.pyplot(fig2)
+
 
 
 ###############
