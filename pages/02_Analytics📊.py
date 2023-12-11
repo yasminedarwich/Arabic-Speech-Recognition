@@ -10,7 +10,7 @@ def calculate_transcription_cost(duration_minutes, cost_per_minute):
         return None
 
 def main():
-    st.title("Transcription Cost Estimation App")
+    st.title("Arabic Transcription Cost Estimation")
 
     # Input
     duration_minutes = st.text_input("Enter Duration (minutes):", "0")
