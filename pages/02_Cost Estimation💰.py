@@ -18,8 +18,6 @@ def calculate_transcription_cost(duration_minutes, cost_per_minute, audio_qualit
 def main():
     st.markdown("<h1 style='text-align: center;'>Arabic Transcription Cost Estimation</h1>", unsafe_allow_html=True)
 
-    st.image("hero-img.png")
-
     # Input
     duration_minutes = st.text_input("Enter Duration (minutes):", "0")
 
@@ -45,3 +43,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+st.image("hero-img.png")
