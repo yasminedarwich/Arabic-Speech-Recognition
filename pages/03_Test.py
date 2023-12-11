@@ -143,3 +143,29 @@ for index, row in df3.iterrows():
             f'{row["reshaped_author"]}'
             f'</div>', unsafe_allow_html=True)
 
+
+#################
+
+
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+# Read the CSV file
+df5 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/categoriesCount.csv?token=GHSAT0AAAAAACKRHIALMFXA76ZBY6N4VNXUZLWM7KQ')
+
+# Calculate the total count of categories
+total_count = df5['category_count'].sum()
+
+# Calculate the category percentages
+df5['Category_Percentage'] = (df5['category_count'] / total_count) * 100
+
+# Create a sunburst chart using Plotly Express
+fig = px.sunburst(df5, path=['namecategory'], values='Category_Percentage', title='Category Distribution')
+
+# Set layout properties for better aesthetics
+fig.update_layout(margin=dict(t=0, l=0, r=0, b=0), paper_bgcolor="white")
+
+# Display the Plotly Express sunburst chart in Streamlit
+st.plotly_chart(fig)
+
