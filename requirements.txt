@@ -30,4 +30,3 @@ wordcloud
 textblob
 farasapy==0.0.14
 tokenizers
-arabic-preprocessing-tools
