@@ -80,6 +80,7 @@ st.markdown(
 
 import streamlit as st
 import pandas as pd
+import matplotlib.pyplot as plt
 from bidi.algorithm import get_display
 import arabic_reshaper
 
@@ -98,12 +99,20 @@ data = pd.DataFrame({'episodes': df2['name'], 'likes': df2['likes_count']})
 # Sort the DataFrame by likes_count in descending order
 data = data.sort_values(by="likes", ascending=True)
 
-# Create a horizontal bar chart using Streamlit
-st.bar_chart(data.set_index('episodes'), height=400)
+# Create a horizontal bar chart using Matplotlib
+fig, ax = plt.subplots(figsize=(10, 6))
+bars = ax.barh(data['episodes'], data['likes'], color='skyblue')
 
-# Display additional information
-st.xlabel("Number of Likes")
-st.ylabel("Episode")
-st.title("Top 10 Most Popular Podcasts")
-st.text("Episodes are displayed in descending order of likes.")
+# Annotate each bar with the number of likes
+for bar, like in zip(bars, data['likes']):
+    ax.text(like, bar.get_y() + bar.get_height() / 2, str(like), va='center', color='blue')
+
+# Customize the plot
+ax.set_xlabel("Number of Likes")
+ax.set_ylabel("Episode")
+ax.set_title("Top 10 Most Popular Podcasts")
+ax.invert_yaxis()  # To display the episodes in descending order
+
+# Display the Matplotlib plot in Streamlit
+st.pyplot(fig)
 
