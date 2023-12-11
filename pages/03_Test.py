@@ -191,13 +191,13 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False).head(10)
 
-# Display the newest podcasts using cards
+# Display the newest podcasts using markdown
 st.title("Newest 10 Podcasts")
 
 for index, row in df6.iterrows():
-    st.card(
+    st.markdown(
         f"**{row['name']}**\n\n"
         f"Date Posted: {row['date_posted']}\n"
         f"Rank: {row['Rank']}",
-        key=f"podcast_{index}"
+        unsafe_allow_html=True
     )
