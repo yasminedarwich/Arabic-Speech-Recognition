@@ -195,7 +195,7 @@ df6 = df6.sort_values(by='date_posted', ascending=False)
 # Create a card for each podcast
 for index, row in df6.iterrows():
     card(
-        text=row['name'],
+        title=row['name'],
         image="https://t3.ftcdn.net/jpg/03/57/76/24/360_F_357762401_Q6IYG6rSR6yoy2mnBsOF3ZtuYVzBNARe.jpg",  # You can replace this with the actual image URL
         styles={
             "card": {
