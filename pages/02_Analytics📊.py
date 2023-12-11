@@ -213,24 +213,6 @@ plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for readability
 st.pyplot(fig3)
 
 
-# Create the bar chart
-st.bar_chart(
-    data=df3,
-    x="author",
-    y="likes_count",
-    color="skyblue",
-)
-
-# Add percentage labels on top of each bar
-for i, row in df3.iterrows():
-    st.text(f"{row['percentage']:.2f}%", x=i, y=row['likes_count'] + 0.5, ha="center")
-
-# Customize the chart
-st.set_xlabel("Author")
-st.set_ylabel("Likes Count")
-st.title("Top 10 Most Popular Authors")
-st.xticks(rotation=45, ha="right")
-
 ######C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10LeastPopularAuthors.csv
 df4 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv?token=GHSAT0AAAAAACKRHIALJ3AVIXXFC3KN66ZYZLWM6WA')
 
