@@ -81,7 +81,7 @@ st.markdown(
 col1, col2, col3 = st.columns(3)
 
 # Place the image in the middle column
-col2.image("automatic.png", width=800)
+col2.image("automatic.png", width=450)
 
 
 
