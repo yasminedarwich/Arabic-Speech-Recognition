@@ -208,28 +208,42 @@ st.plotly_chart(bar_chart)
 #########
 
 
+from streamlit_card import card
 
 # Define categories, icons, and background images
 categories_info = {
     "Business": {"icon": "👜", "background": "business_background_url"},
     "Science & Technology": {"icon": "🔬", "background": "science_background_url"},
-    "Society & Culture": {"icon": "🌐", "background": "society_background_url"}
+    "Society & Culture": {"icon": "🌐", "background": "society_background_url"},
+    "Business & Finance": {"icon": "💰", "background": "business_finance_background_url"},
+    "Religion & Spirituality": {"icon": "⛪", "background": "religion_background_url"},
+    "Arts": {"icon": "🎨", "background": "arts_background_url"},
+    "TV & Film": {"icon": "📺", "background": "tv_film_background_url"},
+    "Sports": {"icon": "⚽", "background": "sports_background_url"},
+    "economy": {"icon": "💼", "background": "economy_background_url"},
+    "Gaming & Hobbies": {"icon": "🎮", "background": "gaming_background_url"},
+    "finance": {"icon": "💸", "background": "finance_background_url"},
+    "Education": {"icon": "🎓", "background": "education_background_url"},
+    "Health & Medicine": {"icon": "⚕️", "background": "health_background_url"},
+    "money": {"icon": "💰", "background": "money_background_url"},
+    "News & Politics": {"icon": "📰", "background": "news_politics_background_url"},
+    "Comedy": {"icon": "😄", "background": "comedy_background_url"},
+    "news": {"icon": "📰", "background": "news_background_url"},
+    "History": {"icon": "📜", "background": "history_background_url"},
+    "Government & Organizations": {"icon": "🏛️", "background": "government_background_url"},
+    "Kids & Family": {"icon": "👨‍👩‍👧‍👦", "background": "kids_family_background_url"},
 }
 
 # Function to display category cards
 def display_category_card(category, info):
     """
-    Display a category card with an icon and background image.
+    Display a category card with an icon and background image using streamlit_card.
     """
-    card_style = (
-        f"background-image: url('{info['background']}');"
-        "background-size: cover; color: white; padding: 20px; border-radius: 10px;"
-    )
-
     with st.container():
-        st.markdown(
-            f"<h2 style='{card_style}'>{info['icon']} {category}</h2>",
-            unsafe_allow_html=True,
+        hasClicked = card(
+            title=f"{info['icon']} {category}",
+            text="Some description",
+            image=info["background"],
         )
 
 # Display category cards
