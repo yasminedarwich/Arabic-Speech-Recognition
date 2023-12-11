@@ -214,4 +214,4 @@ if uploaded_file is not None:
     except sr.RequestError as e:
         st.error(f"Could not request results; {e}")
 
-st.image(Setup-Pc.png)
+st.image("Setup-Pc.png")
