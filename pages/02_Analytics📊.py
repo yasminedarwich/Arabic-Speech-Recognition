@@ -247,7 +247,7 @@ total_count = df5['category_count'].sum()
 df5['Category_Percentage'] = (df5['category_count'] / total_count) * 100
 
 # Create the pie chart
-st.pie_chart(
+fig5 = st.pie_chart(
     data=df5,
     labels=df5['namecategory'],
     values=df5['Category_Percentage'],
@@ -255,10 +255,10 @@ st.pie_chart(
 )
 
 # Customize the layout for better interaction
-fig5.update_traces(textinfo='percent+label', pull=[0.1, 0, 0])  # Adjust the appearance of pie slices
+#fig5.update_traces(textinfo='percent+label', pull=[0.1, 0, 0])  # Adjust the appearance of pie slices
 
 # Display the interactive Plotly chart in Streamlit
-st.plotly_chart(fig5)
+#st.plotly_chart(fig5)
 #
 #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/Newest podcasts.csv
 df6 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv?token=GHSAT0AAAAAACKRHIAL6JTCXRZVDR7HYT4SZLWM74Q")
