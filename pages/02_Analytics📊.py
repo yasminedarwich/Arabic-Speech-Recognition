@@ -376,3 +376,41 @@ chart = alt.Chart(top_10_authors).mark_bar().encode(
 # Display the chart
 st.altair_chart(chart, use_container_width=True)
 
+
+##############
+
+
+
+# Assuming you have a DataFrame named df4 with columns 'browser' and 'listens_count'
+df4 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Top_browsers.csv")
+
+# Replace '0' and 'nan' with 'Podeo' in the 'browser' column
+df4['browser'] = df4['browser'].replace({'0': 'Podeo', pd.NA: 'Podeo'})
+
+# Group by the 'browser' column and sum the 'listens_count'
+grouped_df4 = df4.groupby('browser', as_index=False)['listens_count'].sum()
+
+# Sort the DataFrame by listens_count in descending order
+sorted_df4 = grouped_df4.sort_values(by='listens_count', ascending=False)
+
+# Convert the values in the 'browser' column to strings
+sorted_df4['browser'] = sorted_df4['browser'].astype(str)
+
+# Streamlit App
+st.title('Listens Count by Browser (Combined 0 and nan as Podeo)')
+
+# Bar Chart using Altair
+chart = alt.Chart(sorted_df4).mark_bar().encode(
+    x=alt.X('browser:N', title='Browser', sort='-y'),  # Sort by listens_count descending
+    y=alt.Y('listens_count:Q', title='Listens Count'),
+    tooltip=['browser:N', 'listens_count:Q']
+).properties(
+    width=600,
+    height=400
+).configure_axis(
+    labelAngle=-45,
+    labelAlign='right'
+)
+
+# Display the chart
+st.altair_chart(chart, use_container_width=True)
