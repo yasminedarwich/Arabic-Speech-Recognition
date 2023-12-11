@@ -397,7 +397,7 @@ sorted_df4 = grouped_df4.sort_values(by='listens_count', ascending=False)
 sorted_df4['browser'] = sorted_df4['browser'].astype(str)
 
 # Streamlit App
-st.title('Listens Count by Browser (Combined 0 and nan as Podeo)')
+st.title('Listens Count by Browser')
 
 # Bar Chart using Altair
 chart = alt.Chart(sorted_df4).mark_bar().encode(
