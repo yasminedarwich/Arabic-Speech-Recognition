@@ -1,5 +1,7 @@
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from arabert import ArabertPreprocessor
+from arabert.aragpt2.grover.modeling_gpt2 import GPT2LMHeadModel
 
 # Load AraBERT model and tokenizer
 tokenizer = AutoTokenizer.from_pretrained("aubmindlab/bert-base-arabertv2")
