@@ -192,3 +192,24 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False)
 
+# Create a card for each podcast
+for index, row in df6.iterrows():
+    card(
+        title=row['name'],
+        text=f"Date Posted: {row['date_posted']}",
+        image="https://t3.ftcdn.net/jpg/03/57/76/24/360_F_357762401_Q6IYG6rSR6yoy2mnBsOF3ZtuYVzBNARe.jpg",  # You can replace this with the actual image URL
+        styles={
+            "card": {
+                "width": "500px",
+                "height": "200px",  # Adjust the height as needed
+                "border-radius": "15px",
+                "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
+                "margin-bottom": "20px",  # Add some margin between cards
+            },
+            "title": {
+                "color": "red",
+            },
+        }
+    )
+
+
