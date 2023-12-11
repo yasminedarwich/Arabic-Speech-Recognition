@@ -240,7 +240,7 @@ def display_category_card(category, info):
     """
     Display a category card with an icon and background image using streamlit_card.
     """
-    with st.beta_container():
+    with st.container():
         hasClicked = card(
             title=f"{info['icon']} {category}",
             text="Some description",
