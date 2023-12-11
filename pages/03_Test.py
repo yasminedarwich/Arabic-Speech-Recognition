@@ -239,13 +239,12 @@ def display_category_card(category, info):
     with st.container():
         hasClicked = card(
             title=f"{info['icon']} {category}",
-            text="",
+            text="", image=info["background"],
             styles={
         "card": {
             "width": "100px",
             "height": "100px",
-            "border-radius": "20px",
-            image=info["background"]
+            "border-radius": "20px"}}
         )
 
 # Create 4 columns
