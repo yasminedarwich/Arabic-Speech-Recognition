@@ -376,6 +376,8 @@ chart = alt.Chart(top_10_authors).mark_bar().encode(
 # Display the chart
 st.altair_chart(chart, use_container_width=True)
 
+total_likes = top_10_authors['likes_count'].sum()
+
 # Show percentage labels on top of each bar
 for index, row in top_10_authors.iterrows():
     percentage = (row['likes_count'] / total_likes) * 100
