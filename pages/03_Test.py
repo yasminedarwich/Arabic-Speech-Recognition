@@ -126,10 +126,13 @@ else:
     st.error("Column 'author' not found in the DataFrame. Please adjust the column name.")
     st.stop()
 
-# Display each author and likes_count in a separate card
+# Display authors in two rows with 5 cards on each row
+st.write('<div style="display: flex;">', unsafe_allow_html=True)
 for index, row in df3.iterrows():
     st.write(
-        f"**Author:** {row['reshaped_author']}\n"
-        f"**Likes Count:** {row['likes_count']}\n"
-        "----------------------"
-    )
+        f'<div style="flex: 1; margin: 10px; padding: 15px; border: 1px solid #ddd; text-align: center;">'
+        f'{row["reshaped_author"]}'
+        f'</div>', unsafe_allow_html=True)
+    if index == 4:
+        st.write('</div><div style="display: flex;">', unsafe_allow_html=True)
+st.write('</div>', unsafe_allow_html=True)
