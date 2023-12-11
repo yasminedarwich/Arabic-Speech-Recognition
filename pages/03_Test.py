@@ -194,4 +194,4 @@ res = card(
         "title": {
             "color": "red",
         },
-    },
+    })
