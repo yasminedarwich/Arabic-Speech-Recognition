@@ -213,12 +213,8 @@ st.plotly_chart(bar_chart)
 categories_info = {
     "Business": {"icon": "👜", "background": "business_background_url"},
     "Science & Technology": {"icon": "🔬", "background": "science_background_url"},
-    "Society & Culture": {"icon": "🌐", "background": "society_background_url"},
-    # Add more categories with their respective icons and background images
+    "Society & Culture": {"icon": "🌐", "background": "society_background_url"}
 }
-
-# Page layout
-st.set_page_config(page_title="Creative Meta Tags", page_icon=":rocket:")
 
 # Function to display category cards
 def display_category_card(category, info):
@@ -230,7 +226,7 @@ def display_category_card(category, info):
         "background-size: cover; color: white; padding: 20px; border-radius: 10px;"
     )
 
-    with st.beta_container():
+    with st.container():
         st.markdown(
             f"<h2 style='{card_style}'>{info['icon']} {category}</h2>",
             unsafe_allow_html=True,
