@@ -50,13 +50,6 @@ if st.button('Analyze Sentiment'):
 # Print overall sentiment statistics (you can adjust this part based on your specific needs)
 st.header('Overall Sentiment Statistics')
 
-# You can replace this with your actual sentiment statistics calculation
-# For now, I'm using placeholder values based on your existing code
-total_files = 100  # replace with your actual total_files count
-positive_percentage = 30.0  # replace with your actual positive_percentage
-negative_percentage = 20.0  # replace with your actual negative_percentage
-neutral_percentage = 50.0  # replace with your actual neutral_percentage
-
 st.write(f'Total Files: {total_files}')
 st.write(f'Positive Percentage: {positive_percentage}%')
 st.write(f'Negative Percentage: {negative_percentage}%')
