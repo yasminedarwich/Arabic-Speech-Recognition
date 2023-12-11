@@ -107,6 +107,10 @@ if len(micAudio) > 0:
         with NamedTemporaryFile(delete=False) as temp_audio:
             temp_audio.write(recordedFile.read())
 
+        # Get the duration of the audio file
+        audio_duration = AudioSegment.from_wav(temp_audio.name).duration_seconds
+        st.write(f"Audio Duration: {audio_duration} seconds")
+
         # Transcribe the uploaded audio file
         audio_file = sr.AudioFile(temp_audio.name)
         with audio_file as source:
