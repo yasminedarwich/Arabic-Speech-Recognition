@@ -196,15 +196,11 @@ st.plotly_chart(fig)
 df8 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/TopCountries.csv")
 
 # Streamlit app code
-st.title('Listens Count by Country')
+st.title('Visualizing Listens Count by Country')
 
-# Display the DataFrame
-st.subheader('DataFrame:')
-st.dataframe(df8)
-
-# Visualize using a bar chart
+# Visualization 1: Bar chart
 st.subheader('Bar Chart:')
-st.bar_chart(df8.set_index('Country')['Listens_Count'])
-
-
-
+bar_chart = px.bar(df8, x='Country', y='Listens_Count', title='Listens Count by Country',
+                   labels={'Listens_Count': 'Listens Count'},
+                   color='Listens_Count', color_continuous_scale='Viridis')
+st.plotly_chart(bar_chart)
