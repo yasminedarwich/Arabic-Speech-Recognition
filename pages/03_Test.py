@@ -191,64 +191,26 @@ st.plotly_chart(fig)
 
 ############
 
-from streamlit_card import card
+
+# Read the CSV file
+df = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv')
+
+# Reshape the Arabic words to show correctly
+if 'name' in df.columns:
+    df['reshaped_name'] = [get_display(arabic_reshaper.reshape(item)) for item in df['name'].astype(str)]
+else:
+    # Adjust the column name based on the actual column name in your DataFrame
+    st.error("Column 'name' not found in the DataFrame. Please adjust the column name.")
+    st.stop()
 
 st.title("Newest Podcasts")
 
-import streamlit as st
-from streamlit_card import card  # Assuming you have a library for cards
+# Display podcasts in two columns
+col1, col2 = st.columns(2)
 
-df6 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv')
+for index, row in df.iterrows():
+    col1.write(
+        f'<div style="margin: 10px; padding: 15px; border: 1px solid #ddd; text-align: center;">'
+        f'<strong>{row["reshaped_name"]}</strong><br>{row["date_posted"]}'
+        f'</div>', unsafe_allow_html=True)
 
-# Assuming df6 is your DataFrame with podcast information
-# Reshape Arabic words to display correctly
-df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
-
-# Sort the DataFrame by the date posted in descending order
-df6 = df6.sort_values(by='date_posted', ascending=False)
-
-
-
-def custom_card(title, styles):
-    return f"""
-        <div style="
-            width: {styles["card"]["width"]};
-            height: {styles["card"]["height"]};
-            border-radius: {styles["card"]["border-radius"]};
-            box-shadow: {styles["card"]["box-shadow"]};
-            background-color: {styles["card"]["background-color"]};
-            padding: 15px;
-            margin: 10px;
-            float: left;
-            ">
-            <h2 style="color: {styles["title"]["color"]}; text-align: center; margin-bottom: 10px;">{title}</h2>
-        </div>
-    """
-
-
-# Assuming df6 is a DataFrame containing podcast names
-podcast_names = df6['name'].tolist()
-
-# Styles for the cards
-card_styles = {
-    "width": "300px",
-    "height": "200px",
-    "border-radius": "15px",
-    "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
-    "background-color": "lightblue",
-}
-
-title_styles = {
-    "color": "black",
-    "font-weight": "bold",
-}
-
-# Create two rows of cards
-row1, row2 = st.columns(2)
-
-for index, name in enumerate(podcast_names):
-    card_html = custom_card(name, {"card": card_styles, "title": title_styles})
-    if index < 5:
-        row1.markdown(card_html, unsafe_allow_html=True)
-    else:
-        row2.markdown(card_html, unsafe_allow_html=True)
