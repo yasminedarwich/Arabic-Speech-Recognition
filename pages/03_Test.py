@@ -203,3 +203,40 @@ bar_chart = px.bar(df8, x='country', y='listens_count', title='Listens Count by 
                    labels={'listens_count': 'Listens Count','country': 'Country'},
                    color='listens_count', color_continuous_scale='Viridis')
 st.plotly_chart(bar_chart)
+
+
+#########
+
+
+
+# Define categories, icons, and background images
+categories_info = {
+    "Business": {"icon": "👜", "background": "business_background_url"},
+    "Science & Technology": {"icon": "🔬", "background": "science_background_url"},
+    "Society & Culture": {"icon": "🌐", "background": "society_background_url"},
+    # Add more categories with their respective icons and background images
+}
+
+# Page layout
+st.set_page_config(page_title="Creative Meta Tags", page_icon=":rocket:")
+
+# Function to display category cards
+def display_category_card(category, info):
+    """
+    Display a category card with an icon and background image.
+    """
+    card_style = (
+        f"background-image: url('{info['background']}');"
+        "background-size: cover; color: white; padding: 20px; border-radius: 10px;"
+    )
+
+    with st.beta_container():
+        st.markdown(
+            f"<h2 style='{card_style}'>{info['icon']} {category}</h2>",
+            unsafe_allow_html=True,
+        )
+
+# Display category cards
+for category, info in categories_info.items():
+    display_category_card(category, info)
+
