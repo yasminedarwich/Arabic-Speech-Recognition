@@ -176,35 +176,22 @@ st.plotly_chart(fig)
 
 ############
 
-import streamlit as st
-import streamlit.components.v1 as components
-from bidi.algorithm import get_display
-import pandas as pd
+from streamlit_card import card
 
-# Declare the custom component
-imageCarouselComponent = components.declare_component("image-carousel-component", path="frontend/public")
+st.title("Streamlit Card - test")
 
-def main():
-    # Read the newest podcasts data
-    df6 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv?token=GHSAT0AAAAAACKRHIAL6JTCXRZVDR7HYT4SZLWM74Q")
-
-    # Reshape Arabic words to display correctly
-    df6['name'] = df6['name'].apply(lambda item: get_display(item))
-
-    # Image data (URLs and names)
-    image_data = [{"url": row['name'], "name": row['date_posted']} for index, row in df6.iterrows()]
-
-    # Extract image URLs and names
-    image_urls = [item["url"] for item in image_data]
-    image_names = [item["name"] for item in image_data]
-
-    # Get selected image URL from the custom component
-    selected_image_url = imageCarouselComponent(imageUrls=image_urls, height=200)
-
-    # Display the selected image
-    if selected_image_url:
-        st.image(selected_image_url, caption=f"Selected Podcast: {image_names[image_urls.index(selected_image_url)]}", use_column_width=True)
-
-if __name__ == "__main__":
-    main()
-
+res = card(
+    title="Streamlit Card",
+    text="This is a test card",
+    image="https://placekitten.com/500/500",
+    styles={
+        "card": {
+            "width": "500px",
+            "height": "500px",
+            "border-radius": "60px",
+            "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
+        },
+        "title": {
+            "color": "red",
+        },
+    },
