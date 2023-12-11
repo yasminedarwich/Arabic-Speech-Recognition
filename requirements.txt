@@ -31,3 +31,4 @@ textblob
 farasapy==0.0.14
 tokenizers
 arabert
+ktrain
