@@ -16,7 +16,7 @@ import seaborn as sns
 
 # Define a function to reshape Arabic text
 def reshape_arabic(text):
-    return get_display(arabic_reshaper.reshape(text))
+    return get_display(arabic_reshaper.reshape(text.decode('utf8')))
 
 
 # Define the ArabicTranscriptionModel class
@@ -105,7 +105,7 @@ df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speec
 df2 = df2.sort_values(by="likes_count", ascending=False).head(10)
 
 # Reshape the Arabic words to show correctly
-df2['name'] = [get_display(arabic_reshaper.reshape(item)) for item in df2.name.values]
+df2['name'] = [get_display(arabic_reshaper.reshape(item.decode('utf8'))) for item in df2.name.values]
 
 # Create a DataFrame with the data
 data = pd.DataFrame({'episodes': df2['name'], 'likes': df2['likes_count']})
@@ -133,7 +133,7 @@ df3 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speec
 
 # Reshape the Arabic words to show correctly
 if 'author' in df3.columns:
-    df3['reshaped_author'] = [get_display(arabic_reshaper.reshape(item)) for item in df3['author'].astype(str)]
+    df3['reshaped_author'] = [get_display(arabic_reshaper.reshape(item.decode('utf8'))) for item in df3['author'].astype(str)]
 else:
     # Adjust the column name based on the actual column name in your DataFrame
     st.error("Column 'author' not found in the DataFrame. Please adjust the column name.")
@@ -200,7 +200,7 @@ df6 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speec
 
 # Assuming df6 is your DataFrame with podcast information
 # Reshape Arabic words to display correctly
-df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
+df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item.decode('utf8'))))
 
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False)
