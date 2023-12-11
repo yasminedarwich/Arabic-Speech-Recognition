@@ -152,7 +152,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 # Read the CSV file
-df5 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/categoriesCount.csv?token=GHSAT0AAAAAACKRHIALMFXA76ZBY6N4VNXUZLWM7KQ')
+df5 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/categoriesCount.csv')
 
 st.title("Most Popular Catgories")
 
