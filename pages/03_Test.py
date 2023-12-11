@@ -106,3 +106,27 @@ fig.update_traces(marker_color='skyblue')
 # Display the Plotly Express plot in Streamlit
 st.plotly_chart(fig)
 
+
+
+##############
+
+import streamlit as st
+import pandas as pd
+from bidi.algorithm import get_display
+import arabic_reshaper
+
+# Read the CSV file
+df3 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv?token=GHSAT0AAAAAACKRHIALJ3AVIXXFC3KN66ZYZLWM6WA')
+
+# Sort the DataFrame by 'likes_count' in ascending order
+df3 = df3.sort_values(by='likes_count', ascending=True)
+
+# Select the top 10 rows (episodes with the least likes)
+bottom_10_episodes = df3.head(10)
+
+# Reshape the Arabic words to show correctly
+bottom_10_episodes['name'] = [get_display(arabic_reshaper.reshape(item)) for item in bottom_10_episodes['name']]
+
+# Display the top 10 least popular podcasts in a table
+st.table(bottom_10_episodes[['name', 'likes_count']].reset_index(drop=True))
+
