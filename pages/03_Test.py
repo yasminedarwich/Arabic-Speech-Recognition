@@ -195,3 +195,4 @@ st.title("Newest 10 Podcasts")
 
 for index, row in df6.iterrows():
     st.info(f"**{row['name']}**")
+
