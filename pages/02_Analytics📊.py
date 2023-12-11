@@ -149,7 +149,7 @@ st.pyplot(fig2)
 
 # Create the horizontal bar chart
 st.bar_chart(
-    data=df2, x="name", y="likes_count", color="skyblue", horizontal=True
+    data=df2, x="name", y="likes_count", color="skyblue"
 )
 
 # Annotate each bar with the number of likes
