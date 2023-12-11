@@ -113,6 +113,6 @@ st.markdown(
     )
 
     # Add images, GIFs, or any content you want to display on the introduction page
-    col3, col4, col5 = st.columns([0.2, 0.6, 0.2])
-    with col4:
-        st.image("Podcastcaptions.png")
+col3, col4, col5 = st.columns([0.2, 0.6, 0.2])
+with col4:
+    st.image("Podcastcaptions.png")
