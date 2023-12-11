@@ -90,6 +90,44 @@ load_font()
 # Set the Arabic font using st.markdown() outside the cached function
 st.markdown(f'<style>div {{ font-family: "ArabicFont", sans-serif; }}</style>', unsafe_allow_html=True)
 
+
+
+
+###############
+
+
+df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/episodesWithMostLikes.csv?token=GHSAT0AAAAAACKRHIALIWMTB3F6KSEGETVEZLWM6MA")
+
+# Sort the DataFrame by likes_count in descending order and select the top 10 rows
+df2 = df2.sort_values(by="likes_count", ascending=False).head(10)
+
+# Reshape the Arabic words to show correctly
+x = [get_display(arabic_reshaper.reshape(item)) for item in df2.name.values]
+
+# Get the number of likes for each episode
+likes = df2["likes_count"]
+episodes = x
+
+# Create a horizontal bar chart of the number of likes for the top 10 episodes using Matplotlib
+fig2, ax = plt.subplots(figsize=(10, 6))
+
+# Create the bar chart
+bars = ax.barh(episodes, likes, color='skyblue')
+
+# Annotate each bar with the number of likes
+for bar, like in zip(bars, likes):
+    ax.text(like, bar.get_y() + bar.get_height() / 2, str(like), va='center', color='blue')
+
+# Customize the plot
+ax.set_xlabel("Number of Likes")
+ax.set_ylabel("Episode")
+ax.set_title("Top 10 Most Popular Podcasts")
+ax.invert_yaxis()  # To display the episodes in descending order
+
+# Display the Matplotlib plot in Streamlit
+st.pyplot(fig2)
+
+
 ###########
 
 import streamlit as st
