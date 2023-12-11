@@ -125,8 +125,8 @@ df3 = df3.sort_values(by='likes_count', ascending=True)
 bottom_10_episodes = df3.head(10)
 
 # Reshape the Arabic words to show correctly
-bottom_10_episodes['name'] = [get_display(arabic_reshaper.reshape(item)) for item in bottom_10_episodes['name']]
+bottom_10_episodes['reshaped_name'] = [get_display(arabic_reshaper.reshape(item)) for item in bottom_10_episodes['name']]
 
 # Display the top 10 least popular podcasts in a table
-st.table(bottom_10_episodes[['name', 'likes_count']].reset_index(drop=True))
+st.table(bottom_10_episodes[['reshaped_name', 'likes_count']].reset_index(drop=True))
 
