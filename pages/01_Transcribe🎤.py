@@ -148,10 +148,6 @@ if len(micAudio) > 0:
 
 ##   st.button("Record an Audio✨")
 
-# Section for Calculating Transcription Cost
-st.header("Transcription Cost 💰")
-# Mention the transcription cost per minute
-st.write("The transcription cost is $2.65 per minute.")
 
 
 
