@@ -29,3 +29,4 @@ torch==1.9.0
 wordcloud
 textblob
 farasapy==0.0.14
+tokenizers
