@@ -414,3 +414,34 @@ chart = alt.Chart(sorted_df4).mark_bar().encode(
 
 # Display the chart
 st.altair_chart(chart, use_container_width=True)
+
+
+
+############
+
+
+
+df6= pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10authors.csv"
+sorted_df6 = df6.sort_values(by='episode_count', ascending=False)
+
+# Select the top 3 authors
+top_3_authors = sorted_df6.head(10)
+
+# Streamlit App
+st.title('Top Authors Producing the Most Episodes')
+
+# Bar Chart using Altair
+chart = alt.Chart(top_3_authors).mark_bar().encode(
+    x=alt.X('author:N', title='Author', sort='-y'),  # Sort by episode_count descending
+    y=alt.Y('episode_count:Q', title='Episode Count'),
+    tooltip=['author:N', 'episode_count:Q']
+).properties(
+    width=600,
+    height=400
+).configure_axis(
+    labelAngle=-45,
+    labelAlign='right'
+)
+
+# Display the chart
+st.altair_chart(chart, use_container_width=True)
