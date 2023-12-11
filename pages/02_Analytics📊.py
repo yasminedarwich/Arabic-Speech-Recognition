@@ -212,13 +212,6 @@ plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for readability
 # Display the Matplotlib plot in Streamlit
 st.pyplot(fig3)
 
-st.bar_chart(
-    data=df3,
-    x="author",
-    y="likes_count",
-    color="skyblue",
-)
-
 ######C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10LeastPopularAuthors.csv
 df4 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv?token=GHSAT0AAAAAACKRHIALJ3AVIXXFC3KN66ZYZLWM6WA')
 
