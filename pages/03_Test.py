@@ -84,7 +84,7 @@ from bidi.algorithm import get_display
 import arabic_reshaper
 
 # Read the CSV file
-df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/episodesWithMostLikes.csv?token=GHSAT0AAAAAACKRHIALIWMTB3F6KSEGETVEZLWM6MA")
+df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/episodesWithMostLikes.csv?token=GHSAT0AAAAAACKRHIALGP25WZU7YTHCQAEYZLWPBTQ")
 
 # Sort the DataFrame by likes_count in descending order and select the top 10 rows
 df2 = df2.sort_values(by="likes_count", ascending=False).head(10)
