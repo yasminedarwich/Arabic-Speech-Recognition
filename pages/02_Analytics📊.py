@@ -22,9 +22,9 @@ def main():
     duration_minutes = st.text_input("Enter Duration (minutes):", "0")
 
     # Sliders for additional factors
-    audio_quality = st.slider("Audio Quality (1-10)", min_value=1, max_value=10, value=5)
-    num_speakers = st.slider("Number of Speakers", min_value=1, max_value=5, value=1)
-    urgency = st.slider("Urgency/Turnaround Time (1-5)", min_value=1, max_value=5, value=3)
+    audio_quality = st.slider("Audio Quality (1-10)", min_value=1, max_value=10, value=5, color="#0404fb")
+    num_speakers = st.slider("Number of Speakers", min_value=1, max_value=5, value=1, color="#0404fb")
+    urgency = st.slider("Urgency/Turnaround Time (1-5)", min_value=1, max_value=5, value=3, color="#0404fb")
 
     # Calculate
     cost_per_minute = 2.5  # Cost of Arabic transcription per minute
