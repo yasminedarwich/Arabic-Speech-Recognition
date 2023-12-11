@@ -190,16 +190,38 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False).head(10)
 
-# Display the newest podcasts in cards with scrolling
+# Display the newest podcasts in a scrolling carousel
 st.title("Newest 10 Podcasts")
 
 # Configure the layout to have a horizontal scroll
-st.markdown("<style>div.row-widget.stHorizontal {flex-direction: row;}</style>", unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+        .scrolling-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px;
+            display: flex;
+        }
+        .scrolling-card {
+            min-width: 300px;
+            max-width: 300px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-# Create a row of cards using st.columns
-row = st.columns(len(df6))
+# Create a scrolling container
+with st.markdown('<div class="scrolling-container">', unsafe_allow_html=True):
+    for index, row in df6.iterrows():
+        st.markdown(
+            f'<div class="scrolling-card"><p style="font-weight: bold;">{row["name"]}</p></div>',
+            unsafe_allow_html=True,
+        )
 
-for index, (column, row_data) in enumerate(zip(row, df6.iterrows())):
-    _, row = row_data
-    with column:
-        st.info(f"**{row['name']}**")
