@@ -180,18 +180,37 @@ from streamlit_card import card
 
 st.title("Newest Podcasts")
 
-res = card(
-    title="Streamlit Card",
-    text="This is a test card",
-    image="https://placekitten.com/500/500",
-    styles={
-        "card": {
-            "width": "500px",
-            "height": "500px",
-            "border-radius": "60px",
-            "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
-        },
-        "title": {
-            "color": "red",
-        },
-    })
+import streamlit as st
+from streamlit_card import card  # Assuming you have a library for cards
+
+df6 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv')
+
+# Assuming df6 is your DataFrame with podcast information
+# Reshape Arabic words to display correctly
+df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
+
+# Sort the DataFrame by the date posted in descending order
+df6 = df6.sort_values(by='date_posted', ascending=False)
+
+st.title("Newest Podcasts")
+
+# Create a card for each podcast
+for index, row in df6.iterrows():
+    card(
+        title=row['name'],
+        text=f"Date Posted: {row['date_posted']}",
+        image="https://placekitten.com/500/500",  # You can replace this with the actual image URL
+        styles={
+            "card": {
+                "width": "500px",
+                "height": "200px",  # Adjust the height as needed
+                "border-radius": "15px",
+                "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
+                "margin-bottom": "20px",  # Add some margin between cards
+            },
+            "title": {
+                "color": "red",
+            },
+        }
+    )
+
