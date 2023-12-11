@@ -118,24 +118,18 @@ import arabic_reshaper
 # Read the CSV file
 df3 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv?token=GHSAT0AAAAAACKRHIALJ3AVIXXFC3KN66ZYZLWM6WA')
 
-# Sort the DataFrame by 'likes_count' in ascending order
-df3 = df3.sort_values(by='likes_count', ascending=True)
-
-# Select the top 10 rows (episodes with the least likes)
-bottom_10_episodes = df3.head(10)
-
 # Reshape the Arabic words to show correctly
-if 'name' in bottom_10_episodes.columns:
-    bottom_10_episodes['reshaped_name'] = [get_display(arabic_reshaper.reshape(item)) for item in bottom_10_episodes['name'].astype(str)]
+if 'author' in df3.columns:
+    df3['reshaped_author'] = [get_display(arabic_reshaper.reshape(item)) for item in df3['author'].astype(str)]
 else:
     # Adjust the column name based on the actual column name in your DataFrame
-    st.error("Column 'name' not found in the DataFrame. Please adjust the column name.")
+    st.error("Column 'author' not found in the DataFrame. Please adjust the column name.")
     st.stop()
 
-# Display the top 10 least popular podcasts using cards
-for index, row in bottom_10_episodes.iterrows():
+# Display each author and likes_count in a separate card
+for index, row in df3.iterrows():
     st.write(
-        f"**Episode Name:** {row['reshaped_name']}\n"
+        f"**Author:** {row['reshaped_author']}\n"
         f"**Likes Count:** {row['likes_count']}\n"
         "----------------------"
     )
