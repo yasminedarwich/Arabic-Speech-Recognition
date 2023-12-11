@@ -26,3 +26,4 @@ transformers==4.35.2
 nltk
 wordcloud
 textblob
+streamlit_card
