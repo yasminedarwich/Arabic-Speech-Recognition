@@ -16,16 +16,16 @@ def calculate_transcription_cost(duration_minutes, cost_per_minute, audio_qualit
         return None
 
 def main():
-    st.markdown("<h1 style='text-align: center;'>Arabic Transcription Cost Estimation</h1>", unsafe_allow_html=True)
+    st.title("Transcription Cost Estimation App")
 
     # Input
     duration_minutes = st.text_input("Enter Duration (minutes):", "0")
 
-    # Sliders for additional factors
+    # Sliders for additional factors with custom slider color
     audio_quality = st.slider("Audio Quality (1-10)", min_value=1, max_value=10, value=5, key="audio_quality", color="#0404fb")
     num_speakers = st.slider("Number of Speakers", min_value=1, max_value=5, value=1, key="num_speakers", color="#0404fb")
     urgency = st.slider("Urgency/Turnaround Time (1-5)", min_value=1, max_value=5, value=3, key="urgency", color="#0404fb")
-    
+
     # Calculate
     cost_per_minute = 2.5  # Cost of Arabic transcription per minute
     transcription_cost = calculate_transcription_cost(duration_minutes, cost_per_minute, audio_quality, num_speakers, urgency)
