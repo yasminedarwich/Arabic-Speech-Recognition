@@ -1,48 +1,40 @@
-import os
-import nltk
-from textblob import TextBlob
-from nltk.corpus import stopwords
 import streamlit as st
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-# Download NLTK resources (if not already downloaded)
-nltk.download('punkt')
-nltk.download('stopwords')
+# Load AraBERT model and tokenizer
+tokenizer = AutoTokenizer.from_pretrained("aubmindlab/bert-base-arabertv2")
+model = AutoModelForSequenceClassification.from_pretrained("aubmindlab/bert-base-arabertv2-sentiment")
 
-# Load Arabic stop words
-arabic_stopwords = set(stopwords.words('arabic'))
+# Define sentiment labels
+labels = ["NEGATIVE", "NEUTRAL", "POSITIVE"]
 
-# Read and preprocess your Arabic text files
-def preprocess(text):
-    # Tokenize text
-    words = nltk.word_tokenize(text)
-    # Remove stop words
-    words = [word for word in words if word.lower() not in arabic_stopwords]
-    return ' '.join(words)
+def predict_sentiment(text):
+    """
+    Predicts the sentiment of a given text using AraBERT.
+    """
+    encoded_text = tokenizer(text, return_tensors="pt")
+    output = model(**encoded_text)
+    logits = output.logits.squeeze(0)
+    predicted_label_id = logits.argmax().item()
+    predicted_label = labels[predicted_label_id]
+    return predicted_label
 
-# Function to analyze sentiment
-def analyze_sentiment(text):
-    preprocessed_text = preprocess(text)
-    blob = TextBlob(preprocessed_text)
-    sentiment_score = blob.sentiment.polarity
+# Streamlit app layout
+st.title("AraBERT Sentiment Analysis")
+st.write("Enter your text below to get sentiment analysis.")
 
-    # Classify sentiment into positive, negative, or neutral
-    if sentiment_score > 0:
-        return 'Positive'
-    elif sentiment_score < 0:
-        return 'Negative'
+text = st.text_area("Input Text")
+
+if st.button("Analyze Sentiment"):
+    if text:
+        predicted_sentiment = predict_sentiment(text)
+        st.write(f"Sentiment: **{predicted_sentiment}**")
     else:
-        return 'Neutral'
+        st.write("Please enter some text to analyze.")
 
-# Streamlit App
-st.title('Arabic Sentiment Analysis')
-
-# Input text box for user input
-user_input = st.text_area('Enter your Arabic text here:', '')
-
-# Analyze sentiment on button click
-if st.button('Analyze Sentiment'):
-    if user_input:
-        sentiment_result = analyze_sentiment(user_input)
-        st.write(f'Sentiment: {sentiment_result}')
-    else:
-        st.warning('Please enter some text for analysis.')
+st.markdown(
+    """
+    This app uses AraBERT, a pre-trained Transformer model for Arabic language understanding,
+    to perform sentiment analysis on the input text.
+    """
+)
