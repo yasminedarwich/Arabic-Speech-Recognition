@@ -122,6 +122,36 @@ fig.update_traces(marker_color='skyblue')
 st.plotly_chart(fig)
 
 
+###################
+
+
+df1 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/date_posted.csv?token=GHSAT0AAAAAACKRHIALGNTFVQKWYDXLOCMGZLWM5WQ")
+
+# Convert 'date_posted' to datetime if it's not already
+df1['date_posted'] = pd.to_datetime(df1['date_posted'])
+
+# Filter for episodes posted after 2010
+df1_filtered = df1[df1['date_posted'] >= pd.to_datetime("2010-01-01")]
+
+# Group episodes by year and count the number of episodes for each year
+episode_counts_by_year = df1_filtered.resample('Y', on='date_posted').size().reset_index()
+episode_counts_by_year.columns = ["Year", "Number of Episodes"]
+
+# Create an interactive Plotly line plot
+fig1 = px.line(episode_counts_by_year, x="Year", y="Number of Episodes", title='Trend of Episodes by Year (After 2010)')
+
+# Customize the plot layout
+fig1.update_layout(
+    xaxis_title='Year',
+    yaxis_title='Number of Episodes',
+)
+
+# Display the Plotly plot in Streamlit
+st.plotly_chart(fig1)
+
+
+
+
 ############
 
 
