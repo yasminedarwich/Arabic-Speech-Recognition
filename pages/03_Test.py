@@ -126,6 +126,8 @@ else:
     st.error("Column 'author' not found in the DataFrame. Please adjust the column name.")
     st.stop()
 
+st.title("Least Popular Authors")
+
 # Display authors in two rows with 5 columns on each row
 row1, row2 = st.columns(2)
 
