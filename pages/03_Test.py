@@ -240,6 +240,11 @@ def display_category_card(category, info):
         hasClicked = card(
             title=f"{info['icon']} {category}",
             text="",
+            styles={
+        "card": {
+            "width": "100px",
+            "height": "100px",
+            "border-radius": "20px",
             image=info["background"]
         )
 
