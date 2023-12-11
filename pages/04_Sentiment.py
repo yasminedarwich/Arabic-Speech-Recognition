@@ -46,11 +46,3 @@ if st.button('Analyze Sentiment'):
         st.write(f'Sentiment: {sentiment_result}')
     else:
         st.warning('Please enter some text for analysis.')
-
-# Print overall sentiment statistics (you can adjust this part based on your specific needs)
-st.header('Overall Sentiment Statistics')
-
-st.write(f'Total Files: {total_files}')
-st.write(f'Positive Percentage: {positive_percentage}%')
-st.write(f'Negative Percentage: {negative_percentage}%')
-st.write(f'Neutral Percentage: {neutral_percentage}%')
