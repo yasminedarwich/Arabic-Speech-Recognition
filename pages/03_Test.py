@@ -191,11 +191,11 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False)
-import streamlit as st
 
-def custom_card(title, text, styles):
-    st.markdown(
-        f"""
+
+
+def custom_card(title, styles):
+    return f"""
         <div style="
             width: {styles["card"]["width"]};
             height: {styles["card"]["height"]};
@@ -203,29 +203,37 @@ def custom_card(title, text, styles):
             box-shadow: {styles["card"]["box-shadow"]};
             background-color: {styles["card"]["background-color"]};
             padding: 15px;
+            margin: 10px;
+            float: left;
             ">
-            <h2 style="color: {styles["title"]["color"]}">{title}</h2>
-            <p>{text}</p>
+            <h2 style="color: {styles["title"]["color"]}; text-align: center; margin-bottom: 10px;">{title}</h2>
         </div>
-        """,
-        unsafe_allow_html=True
-    )
+    """
 
-for index, row in df6.iterrows():
-    custom_card(
-        title=row['name'],
-        text='',  # Add additional information here
-        styles={
-            "card": {
-                "width": "300px",
-                "height": "200px",
-                "border-radius": "15px",
-                "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
-                "background-color": "lightblue",
-            },
-            "title": {
-                "color": "black",
-                "font-weight": "bold",
-            },
-        },
-    )
+
+# Assuming df6 is a DataFrame containing podcast names
+podcast_names = df6['name'].tolist()
+
+# Styles for the cards
+card_styles = {
+    "width": "150px",
+    "height": "100px",
+    "border-radius": "15px",
+    "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
+    "background-color": "lightblue",
+}
+
+title_styles = {
+    "color": "black",
+    "font-weight": "bold",
+}
+
+# Create two rows of cards
+row1, row2 = st.beta_columns(2)
+
+for index, name in enumerate(podcast_names):
+    card_html = custom_card(name, {"card": card_styles, "title": title_styles})
+    if index < 5:
+        row1.markdown(card_html, unsafe_allow_html=True)
+    else:
+        row2.markdown(card_html, unsafe_allow_html=True)
