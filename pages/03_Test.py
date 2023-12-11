@@ -189,19 +189,22 @@ st.plotly_chart(fig)
 
 
 
-############
+###########
 
 
-# Read the CSV file
-df = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv')
+# Load the DataFrame from the provided URL
+df8 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/TopCountries.csv")
 
-# Reshape the Arabic words to show correctly
-if 'name' in df.columns:
-    df['reshaped_name'] = [get_display(arabic_reshaper.reshape(item)) for item in df['name'].astype(str)]
-else:
-    # Adjust the column name based on the actual column name in your DataFrame
-    st.error("Column 'name' not found in the DataFrame. Please adjust the column name.")
-    st.stop()
+# Streamlit app code
+st.title('Listens Count by Country')
 
-st.title("Newest Podcasts")
+# Display the DataFrame
+st.subheader('DataFrame:')
+st.dataframe(df8)
+
+# Visualize using a bar chart
+st.subheader('Bar Chart:')
+st.bar_chart(df8.set_index('Country')['Listens_Count'])
+
+
 
