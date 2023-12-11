@@ -91,7 +91,7 @@ st.title("Podeo Podcasts Analysis")
 # Load your data, assuming you have the data loaded into the 'df1' DataFrame
 #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/date_posted.csv
  #Load your data, assuming you have the data loaded into the 'df1' DataFrame
-df1 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/date_posted.csv")
+df1 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/date_posted.csv?token=GHSAT0AAAAAACKRHIALGNTFVQKWYDXLOCMGZLWM5WQ")
 
 # Convert 'date_posted' to datetime if it's not already
 df1['date_posted'] = pd.to_datetime(df1['date_posted'])
@@ -116,7 +116,7 @@ fig1.update_layout(
 st.plotly_chart(fig1)
 
 ###########C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/episodesWithMostLikes.csv
-df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/episodesWithMostLikes.csv")
+df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/episodesWithMostLikes.csv?token=GHSAT0AAAAAACKRHIALIWMTB3F6KSEGETVEZLWM6MA")
 
 # Sort the DataFrame by likes_count in descending order and select the top 10 rows
 df2 = df2.sort_values(by="likes_count", ascending=False).head(10)
@@ -148,7 +148,7 @@ ax.invert_yaxis()  # To display the episodes in descending order
 st.pyplot(fig2)
 
 #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10LeastPopularPodcasts.csv
-df3 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv')
+df3 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv?token=GHSAT0AAAAAACKRHIALJ3AVIXXFC3KN66ZYZLWM6WA')
 
 # Sort the DataFrame by 'likes_count' in ascending order
 df3 = df3.sort_values(by='likes_count', ascending=True)
@@ -180,7 +180,7 @@ st.pyplot(fig3)
 
 #####C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10MostPopularAuthors.csv
 # 
-df3 = pd.read_csv("https://github.com/yasminedarwich/Arabic-Speech-Recognition/tree/main/EDA_Local/top10MostPopularAuthors.csv")
+df3 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv?token=GHSAT0AAAAAACKRHIALJ3AVIXXFC3KN66ZYZLWM6WA")
 
 # Reshape the Arabic words to show correctly
 x = df3['author'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
@@ -212,7 +212,7 @@ plt.xticks(rotation=45, ha='right')  # Rotate x-axis labels for readability
 st.pyplot(fig3)
 
 ######C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10LeastPopularAuthors.csv
-df4 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv')
+df4 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv?token=GHSAT0AAAAAACKRHIALJ3AVIXXFC3KN66ZYZLWM6WA')
 
 # Sort the DataFrame by 'likes_count' in ascending order
 df4 = df4.sort_values(by='likes_count', ascending=True)
@@ -238,7 +238,7 @@ st.plotly_chart(fig4)
 
 #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/categoriesCount.csv
 
-df5 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/categoriesCount.csv')
+df5 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/categoriesCount.csv?token=GHSAT0AAAAAACKRHIALMFXA76ZBY6N4VNXUZLWM7KQ')
 
 # Calculate the total count of categories
 total_count = df5['category_count'].sum()
@@ -261,7 +261,7 @@ fig5.update_traces(textinfo='percent+label', pull=[0.1, 0, 0])  # Adjust the app
 st.plotly_chart(fig5)
 #
 #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/Newest podcasts.csv
-df6 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv")
+df6 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv?token=GHSAT0AAAAAACKRHIAL6JTCXRZVDR7HYT4SZLWM74Q")
 
 # Reshape Arabic words to display correctly
 df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
@@ -283,7 +283,7 @@ st.pyplot(fig6)
 
 #
 #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/oldestPodcasts.csv
-df7 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/oldestPodcasts.csv")
+df7 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/oldestPodcasts.csv?token=GHSAT0AAAAAACKRHIAKI3WNMJE5UVLAPIKUZLWNAEQ")
 
 # Reshape Arabic words to display correctly
 df7['name'] = df7['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
