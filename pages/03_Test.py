@@ -95,10 +95,15 @@ df2['name'] = [get_display(arabic_reshaper.reshape(item)) for item in df2.name.v
 # Create a DataFrame with the data
 data = pd.DataFrame({'episodes': df2['name'], 'likes': df2['likes_count']})
 
+# Sort the DataFrame by likes_count in descending order
+data = data.sort_values(by="likes", ascending=True)
+
 # Create a horizontal bar chart using Streamlit
 st.bar_chart(data.set_index('episodes'), height=400)
 
 # Display additional information
 st.xlabel("Number of Likes")
+st.ylabel("Episode")
 st.title("Top 10 Most Popular Podcasts")
 st.text("Episodes are displayed in descending order of likes.")
+
