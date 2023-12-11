@@ -192,44 +192,35 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False)
 
-st.title("Newest Podcasts")
+# Create a list of card instances
+cards = []
 
-
-
-# Initialize CSS styling for the cards
-card_styles = """
-    .podcast-card {
-        width: 180px;
-        height: 150px;
-        border-radius: 15px;
-        box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        margin: 10px;
-        padding: 10px;
-        background-color: #add8e6;  /* Light blue background color */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+for index, row in df6.iterrows():
+    # Customize the title, text, and styles for each card
+    card_data = {
+        "title": row["name"],
+        "text": "",  # You can set this to an empty string or any description you want
+        "styles": {
+            "card": {
+                "width": "180px",
+                "height": "150px",
+                "border-radius": "15px",
+                "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
+                "background-color": "#add8e6",  # Light blue background color
+                "display": "flex",
+                "align-items": "center",
+                "justify-content": "center",
+                "text-align": "center",
+            },
+            "title": {
+                "color": "black",
+                "font-weight": "bold",
+            },
+        },
     }
-
-    .podcast-title {
-        color: black;
-        font-weight: bold;
-    }
-"""
-
-# Apply CSS styling
-st.markdown(f'<style>{card_styles}</style>', unsafe_allow_html=True)
-
-# Create two rows with five columns each
-for i in range(0, len(df6), 5):
-    row_df = df6.iloc[i:i+5]
-    st.markdown('<div style="display: flex; flex-direction: row;">', unsafe_allow_html=True)
     
-    # Create a card for each podcast in the row
-    for index, row in row_df.iterrows():
-        st.markdown('<div class="podcast-card">', unsafe_allow_html=True)
-        st.markdown(f'<p class="podcast-title">{row["name"]}</p>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
+    cards.append(card(**card_data))
+
+# Display the cards
+for res in cards:
+    res
