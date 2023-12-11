@@ -21,7 +21,7 @@ def main():
 
     # Display Result
     if transcription_cost is not None:
-        st.subheader("Estimated Transcription Cost:")
+        st.subheader("The estimated transcription cost is:")
         st.write(f"${transcription_cost:.2f}")
     else:
         st.warning("Please enter a valid numerical value for duration.")
