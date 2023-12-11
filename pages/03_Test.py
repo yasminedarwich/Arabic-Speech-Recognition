@@ -195,6 +195,7 @@ df6 = df6.sort_values(by='date_posted', ascending=False)
 st.title("Newest Podcasts")
 
 
+
 # Initialize CSS styling for the cards
 card_styles = """
     .podcast-card {
@@ -205,10 +206,14 @@ card_styles = """
         margin: 10px;
         padding: 10px;
         background-color: #add8e6;  /* Light blue background color */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     }
 
     .podcast-title {
-        color: red;
+        color: black;
         font-weight: bold;
     }
 """
@@ -225,7 +230,6 @@ for i in range(0, len(df6), 5):
     for index, row in row_df.iterrows():
         st.markdown('<div class="podcast-card">', unsafe_allow_html=True)
         st.markdown(f'<p class="podcast-title">{row["name"]}</p>', unsafe_allow_html=True)
-        st.markdown(f'<p>Date Posted: {row["date_posted"]}</p>', unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
     
     st.markdown('</div>', unsafe_allow_html=True)
