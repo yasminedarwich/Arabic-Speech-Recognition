@@ -178,20 +178,9 @@ st.plotly_chart(fig)
 
 import streamlit as st
 import pandas as pd
-from bidi.algorithm import get_display
-import arabic_reshaper
 
-# Read the CSV file
+# Read your CSV file (replace the URL with your actual CSV file URL)
 df6 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv?token=GHSAT0AAAAAACKRHIAL6JTCXRZVDR7HYT4SZLWM74Q")
-
-# Reshape Arabic words to display correctly
-df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
-
-# Sort the DataFrame by the date posted in descending order
-df6 = df6.sort_values(by='date_posted', ascending=False).head(10)
-
-# Display the newest podcasts with a scrolling carousel
-st.title("Newest 10 Podcasts")
 
 # Configure the layout to have a horizontal scroll
 st.markdown(
@@ -218,9 +207,12 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+# Display the newest podcasts in a scrolling carousel
+st.title("Newest Podcasts")
+
 # Create a scrolling container
 with st.markdown('<div class="scrolling-container">', unsafe_allow_html=True):
-    for index, row in df6.iterrows():
+    for index, row in df6.head(5).iterrows():
         st.markdown(
             f'<div class="scrolling-card"><p style="font-weight: bold;">{row["name"]}</p></div>',
             unsafe_allow_html=True,
