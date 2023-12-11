@@ -78,3 +78,29 @@ st.markdown(
 ###########
 
 
+import streamlit as st
+import pandas as pd
+from bidi.algorithm import get_display
+import arabic_reshaper
+
+# Read the CSV file
+df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/episodesWithMostLikes.csv?token=GHSAT0AAAAAACKRHIALIWMTB3F6KSEGETVEZLWM6MA")
+
+# Sort the DataFrame by likes_count in descending order and select the top 10 rows
+df2 = df2.sort_values(by="likes_count", ascending=False).head(10)
+
+# Reshape the Arabic words to show correctly
+x = [get_display(arabic_reshaper.reshape(item)) for item in df2.name.values]
+
+# Get the number of likes for each episode
+likes = df2["likes_count"]
+episodes = x
+
+# Create a horizontal bar chart using Streamlit
+st.bar_chart(likes, labels=episodes, height=400)
+
+# Display additional information
+st.xlabel("Number of Likes")
+st.ylabel("Episode")
+st.title("Top 10 Most Popular Podcasts")
+st.text("Episodes are displayed in descending order of likes.")
