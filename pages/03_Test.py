@@ -123,39 +123,6 @@ st.plotly_chart(fig)
 
 ############
 
-import streamlit as st
-import pandas as pd
-import plotly.express as px
-from bidi.algorithm import get_display
-import arabic_reshaper
-
-# Read the CSV file
-df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/episodesWithMostLikes.csv?token=GHSAT0AAAAAACKRHIALGP25WZU7YTHCQAEYZLWPBTQ")
-
-# Sort the DataFrame by likes_count in descending order and select the top 10 rows
-df2 = df2.sort_values(by="likes_count", ascending=False).head(10)
-
-# Reshape the Arabic words to show correctly
-df2['name'] = [get_display(arabic_reshaper.reshape(item)) for item in df2.name.values]
-
-# Create a DataFrame with the data
-data = pd.DataFrame({'episodes': df2['name'], 'likes': df2['likes_count']})
-
-# Sort the DataFrame by likes_count in descending order
-data = data.sort_values(by="likes", ascending=True)
-
-# Create an interactive horizontal bar chart using Plotly Express
-fig = px.bar(data, x='likes', y='episodes', orientation='h', text='likes', title="Top 10 Most Popular Podcasts")
-fig.update_layout(xaxis_title="Number of Likes", yaxis_title="Episode")
-fig.update_traces(marker_color='skyblue')
-
-# Display the Plotly Express plot in Streamlit with right-to-left text direction
-with st.markdown("", unsafe_allow_html=True):
-    st.markdown(f'<div dir="rtl">{fig.to_html()}</div>', unsafe_allow_html=True)
-
-
-
-############
 
 import streamlit as st
 import pandas as pd
