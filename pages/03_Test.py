@@ -217,7 +217,6 @@ categories_info = {
     "Business & Finance": {"icon": "💰", "background": "business_finance_background_url"},
     "Religion & Spirituality": {"icon": "⛪", "background": "religion_background_url"},
     "Arts": {"icon": "🎨", "background": "arts_background_url"},
-    "TV & Film": {"icon": "📺", "background": "tv_film_background_url"},
     "Sports": {"icon": "⚽", "background": "sports_background_url"},
     "Economy": {"icon": "💼", "background": "economy_background_url"},
     "Gaming & Hobbies": {"icon": "🎮", "background": "gaming_background_url"},
