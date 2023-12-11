@@ -13,20 +13,6 @@ import io
 import base64
 import seaborn as sns
 
-# Path to the Arabic font file in OTF format (adjust the path accordingly)
-font_path = "https://github.com/yasminedarwich/Arabic-Speech-Recognition/blob/main/ArabicFont.otf"
-
-# Cache the font loading operation for better performance
-@st.cache
-def load_font():
-    pass  # Placeholder function; no Streamlit functions should be called inside this function
-
-# Load the font
-load_font()
-
-# Set the Arabic font using st.markdown() outside the cached function
-st.markdown(f'<style>div {{ font-family: "ArabicFont", sans-serif; }}</style>', unsafe_allow_html=True)
-
 # Define a function to reshape Arabic text
 def reshape_arabic(text):
     return get_display(arabic_reshaper.reshape(text))
@@ -88,6 +74,20 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+# Path to the Arabic font file in OTF format (adjust the path accordingly)
+font_path = "https://github.com/yasminedarwich/Arabic-Speech-Recognition/blob/main/ArabicFont.otf"
+
+# Cache the font loading operation for better performance
+@st.cache
+def load_font():
+    pass  # Placeholder function; no Streamlit functions should be called inside this function
+
+# Load the font
+load_font()
+
+# Set the Arabic font using st.markdown() outside the cached function
+st.markdown(f'<style>div {{ font-family: "ArabicFont", sans-serif; }}</style>', unsafe_allow_html=True)
 
 ###########
 
