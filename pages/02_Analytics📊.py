@@ -332,3 +332,52 @@ for i, (category, info) in enumerate(categories_info.items()):
     with columns[col_index]:
         display_category_card(category, info)
 
+
+
+#########
+
+
+import pandas as pd
+import streamlit as st
+import arabic_reshaper
+from bidi.algorithm import get_display
+
+# Create a DataFrame
+df = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10MostPopularAuthors.csv")
+
+# Reshape the Arabic words to show correctly on matplotlib
+df['author_display'] = df['author'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
+
+df = df.sort_values(by='likes_count', ascending=False)
+
+# Select the top 10 rows (authors with the most likes)
+top_10_authors = df.head(10)
+
+# Streamlit App
+st.title('Top 10 Most Popular Authors')
+
+# Bar Chart using Altair (a popular visualization library compatible with Streamlit)
+import altair as alt
+
+chart = alt.Chart(top_10_authors).mark_bar().encode(
+    x=alt.X('author_display:N', title='Author'),
+    y=alt.Y('likes_count:Q', title='Likes Count'),
+    tooltip=['author_display:N', 'likes_count:Q']
+).properties(
+    width=600,
+    height=400
+).configure_axis(
+    labelAngle=-45,
+    labelAlign='right'
+)
+
+st.altair_chart(chart, use_container_width=True)
+
+# Show percentage labels on top of each bar
+total_likes = top_10_authors['likes_count'].sum()
+for index, row in top_10_authors.iterrows():
+    percentage = (row['likes_count'] / total_likes) * 100
+    st.text(f"{row['author_display']}: {percentage:.2f}%")
+
+
+
