@@ -195,7 +195,6 @@ st.plotly_chart(fig)
 # Load the DataFrame from the provided URL
 df8 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/TopCountries.csv")
 
-# Streamlit app code
 st.title('Visualizing Listens Count by Country')
 
 # Bar chart
@@ -209,6 +208,8 @@ st.plotly_chart(bar_chart)
 
 
 from streamlit_card import card
+
+st.title('Top Meta-Tags')
 
 # Define categories, icons, and background images
 categories_info = {
