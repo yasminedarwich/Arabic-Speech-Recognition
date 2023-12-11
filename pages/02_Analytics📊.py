@@ -359,8 +359,10 @@ st.title('Top 10 Most Popular Authors')
 # Bar Chart using Altair (a popular visualization library compatible with Streamlit)
 import altair as alt
 
+
+# Bar Chart using Altair
 chart = alt.Chart(top_10_authors).mark_bar().encode(
-    x=alt.X('author_display:N', title='Author'),
+    x=alt.X('author_display:N', title='Author', sort='-y'),  # Sort by likes_count descending
     y=alt.Y('likes_count:Q', title='Likes Count'),
     tooltip=['author_display:N', 'likes_count:Q']
 ).properties(
@@ -371,13 +373,10 @@ chart = alt.Chart(top_10_authors).mark_bar().encode(
     labelAlign='right'
 )
 
+# Display the chart
 st.altair_chart(chart, use_container_width=True)
 
 # Show percentage labels on top of each bar
-total_likes = top_10_authors['likes_count'].sum()
 for index, row in top_10_authors.iterrows():
     percentage = (row['likes_count'] / total_likes) * 100
     st.text(f"{row['author_display']}: {percentage:.2f}%")
-
-
-
