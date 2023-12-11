@@ -13,6 +13,22 @@ import io
 import base64
 import seaborn as sns
 
+# Path to the Arabic font file in OTF format (adjust the path accordingly)
+font_path = "https://github.com/yasminedarwich/Arabic-Speech-Recognition/blob/main/ArabicFont.otf"
+
+# Cache the font loading operation for better performance
+@st.cache
+def load_font():
+    st.markdown(f'<style>div {{ font-family: "ArabicFont", sans-serif; }}</style>', unsafe_allow_html=True)
+
+# Load the font
+load_font()
+
+# Your Streamlit app content goes here
+st.title("Streamlit with Arabic Font")
+st.write("تجربة استخدام اللغة العربية في Streamlit")
+
+
 # Define a function to reshape Arabic text
 def reshape_arabic(text):
     return get_display(arabic_reshaper.reshape(text))
