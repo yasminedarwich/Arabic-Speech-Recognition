@@ -90,17 +90,15 @@ df2 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speec
 df2 = df2.sort_values(by="likes_count", ascending=False).head(10)
 
 # Reshape the Arabic words to show correctly
-x = [get_display(arabic_reshaper.reshape(item)) for item in df2.name.values]
+df2['name'] = [get_display(arabic_reshaper.reshape(item)) for item in df2.name.values]
 
-# Get the number of likes for each episode
-likes = df2["likes_count"]
-episodes = x
+# Create a DataFrame with the data
+data = pd.DataFrame({'episodes': df2['name'], 'likes': df2['likes_count']})
 
 # Create a horizontal bar chart using Streamlit
-st.bar_chart(likes, labels=episodes, height=400)
+st.bar_chart(data.set_index('episodes'), height=400)
 
 # Display additional information
 st.xlabel("Number of Likes")
-st.ylabel("Episode")
 st.title("Top 10 Most Popular Podcasts")
 st.text("Episodes are displayed in descending order of likes.")
