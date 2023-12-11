@@ -147,6 +147,27 @@ ax.invert_yaxis()  # To display the episodes in descending order
 # Display the Matplotlib plot in Streamlit
 st.pyplot(fig2)
 
+# Create the horizontal bar chart
+st.bar_chart(
+    data=df2, x="name", y="likes_count", color="skyblue", horizontal=True
+)
+
+# Annotate each bar with the number of likes
+for i, (episode, like) in enumerate(zip(episodes, likes)):
+    st.text(
+        str(like),
+        x=like + 0.1,
+        y=i,
+        horizontalalignment="left",
+        verticalalignment="center",
+        color="blue",
+    )
+
+# Customize the chart
+st.set_xlabel("Number of Likes")
+st.set_ylabel("Episode")
+st.title("Top 10 Most Popular Podcasts")
+
 #C:/Users/User/Desktop/DonaLeb/PodeoCodesLocal/EDA_Local/top10LeastPopularPodcasts.csv
 df3 = pd.read_csv('https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/top10LeastPopularAuthors.csv?token=GHSAT0AAAAAACKRHIALJ3AVIXXFC3KN66ZYZLWM6WA')
 
