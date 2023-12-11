@@ -223,7 +223,6 @@ for index, row in df6.iterrows():
     cards.append(card(**card_data))
 
 # Display the cards
-st.title("Newest Podcasts")
 # Assuming you want to display the cards in two rows
 row1, row2 = st.columns(2)
 for i, res in enumerate(cards):
