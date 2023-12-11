@@ -216,8 +216,8 @@ podcast_names = df6['name'].tolist()
 
 # Styles for the cards
 card_styles = {
-    "width": "500px",
-    "height": "300px",
+    "width": "300px",
+    "height": "200px",
     "border-radius": "15px",
     "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
     "background-color": "lightblue",
