@@ -199,8 +199,7 @@ df8 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speec
 st.title('Visualizing Listens Count by Country')
 
 # Visualization 1: Bar chart
-st.subheader('Bar Chart:')
-bar_chart = px.bar(df8, x='Country', y='Listens_Count', title='Listens Count by Country',
-                   labels={'Listens_Count': 'Listens Count'},
-                   color='Listens_Count', color_continuous_scale='Viridis')
+bar_chart = px.bar(df8, x='country', y='listens_count', title='Listens Count by Country',
+                   labels={'listens_count': 'Listens Count'},
+                   color='listens_count', color_continuous_scale='Viridis')
 st.plotly_chart(bar_chart)
