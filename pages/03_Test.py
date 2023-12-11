@@ -191,19 +191,37 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False)
+import streamlit as st
 
-st.title("Newest Podcasts")
+def custom_card(title, text, styles):
+    st.markdown(
+        f"""
+        <div style="
+            width: {styles["card"]["width"]};
+            height: {styles["card"]["height"]};
+            border-radius: {styles["card"]["border-radius"]};
+            box-shadow: {styles["card"]["box-shadow"]};
+            background-color: {styles["card"]["background-color"]};
+            padding: 15px;
+            ">
+            <h2 style="color: {styles["title"]["color"]}">{title}</h2>
+            <p>{text}</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 for index, row in df6.iterrows():
-    st.card(
+    custom_card(
         title=row['name'],
-        text='',  # You can add additional information here
+        text='',  # Add additional information here
         styles={
             "card": {
                 "width": "300px",
                 "height": "200px",
                 "border-radius": "15px",
                 "box-shadow": "0 0 10px rgba(0,0,0,0.5)",
+                "background-color": "lightblue",
             },
             "title": {
                 "color": "black",
@@ -211,4 +229,3 @@ for index, row in df6.iterrows():
             },
         },
     )
-
