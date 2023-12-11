@@ -205,18 +205,3 @@ else:
 
 st.title("Newest Podcasts")
 
-# Display podcasts in two columns
-col1, col2 = st.columns(2)
-
-# Display content in the first column
-with col1:
-    # Your content for the first column goes here
-    st.write("Column 1 Content")
-
-# Display content in the second column
-with col2:
-    # Display the title in the second column
-    st.title("Newest Podcasts")
-
-    # Your content for the second column goes here
-    st.write("Column 2 Content")
