@@ -31,4 +31,3 @@ textblob
 farasapy==0.0.14
 tokenizers
 arabert
-arabert.aragpt2.grover.modeling_gpt2
