@@ -76,7 +76,7 @@ st.markdown(
 )
 
 # Create a Streamlit app
-st.image("automatic.png")
+st.image("automatic.png", width=300)
 
 
 # This is the transcription page
