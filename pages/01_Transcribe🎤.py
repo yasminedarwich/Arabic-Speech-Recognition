@@ -77,13 +77,7 @@ st.markdown(
 
 # Create a Streamlit app
 
-# Create a three-column layout
-col1, col2, col3 = st.columns(3)
-
-# Place the image in the middle column
-col2.image("automatic.png", width=450)
-
-
+st.write("<h1 style='text-align: center;'>Start Transcribing!</h1>", unsafe_allow_html=True)
 
 # This is the transcription page
 
