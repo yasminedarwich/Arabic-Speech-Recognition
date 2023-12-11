@@ -27,7 +27,7 @@ def main():
     urgency = st.slider("Urgency/Turnaround Time (1-5)", min_value=1, max_value=5, value=3)
 
     # Calculate
-    cost_per_minute = 2.5  # Cost of Arabic transcription per minute
+    cost_per_minute = 2.65  # Cost of Arabic transcription per minute
     transcription_cost = calculate_transcription_cost(duration_minutes, cost_per_minute, audio_quality, num_speakers, urgency)
 
     # Display Result
