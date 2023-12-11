@@ -225,7 +225,7 @@ for index, row in df6.iterrows():
 # Display the cards
 st.title("Newest Podcasts")
 # Assuming you want to display the cards in two rows
-row1, row2 = st.beta_columns(2)
+row1, row2 = st.columns(2)
 for i, res in enumerate(cards):
     if i < 5:
         row1.write(res, use_container_width=True)
