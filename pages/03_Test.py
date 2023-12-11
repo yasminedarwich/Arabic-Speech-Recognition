@@ -171,3 +171,33 @@ fig.update_layout(
 
 # Display the Plotly sunburst chart in Streamlit
 st.plotly_chart(fig)
+
+
+
+############
+
+
+import streamlit as st
+import pandas as pd
+from bidi.algorithm import get_display
+import arabic_reshaper
+
+# Read the CSV file
+df6 = pd.read_csv("https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/EDA_Local/Newest%20podcasts.csv?token=GHSAT0AAAAAACKRHIAL6JTCXRZVDR7HYT4SZLWM74Q")
+
+# Reshape Arabic words to display correctly
+df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape(item)))
+
+# Sort the DataFrame by the date posted in descending order
+df6 = df6.sort_values(by='date_posted', ascending=False).head(10)
+
+# Display the newest podcasts using cards
+st.title("Newest 10 Podcasts")
+
+for index, row in df6.iterrows():
+    st.card(
+        f"**{row['name']}**\n\n"
+        f"Date Posted: {row['date_posted']}\n"
+        f"Rank: {row['Rank']}",
+        key=f"podcast_{index}"
+    )
