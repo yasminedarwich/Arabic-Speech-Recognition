@@ -192,6 +192,7 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False)
 
+
 # Create a list of card instances
 cards = []
 
@@ -222,5 +223,11 @@ for index, row in df6.iterrows():
     cards.append(card(**card_data))
 
 # Display the cards
-for res in cards:
-    res
+st.title("Newest Podcasts")
+# Assuming you want to display the cards in two rows
+row1, row2 = st.beta_columns(2)
+for i, res in enumerate(cards):
+    if i < 5:
+        row1.write(res, use_container_width=True)
+    else:
+        row2.write(res, use_container_width=True)
