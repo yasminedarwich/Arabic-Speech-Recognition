@@ -234,18 +234,20 @@ categories_info = {
     "Kids & Family": {"icon": "👨‍👩‍👧‍👦", "background": "kids_family_background_url"},
 }
 
+
 # Function to display category cards
 def display_category_card(category, info):
     """
     Display a category card with an icon and background image using streamlit_card.
     """
-    with st.container():
+    with st.beta_container():
         hasClicked = card(
             title=f"{info['icon']} {category}",
+            text="Some description",
             image=info["background"],
         )
 
 # Display category cards
 for category, info in categories_info.items():
     display_category_card(category, info)
- 
+
