@@ -428,7 +428,7 @@ sorted_df6 = df6.sort_values(by='episode_count', ascending=False)
 top_authors = sorted_df6.head(10)
 
 # Streamlit App
-st.title('Top 3 Authors Producing the Most Episodes')
+st.title('Authors Producing the Most Episodes')
 
 # Bar Chart using Altair
 chart = alt.Chart(top_authors).mark_bar().encode(
