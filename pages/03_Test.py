@@ -190,7 +190,7 @@ df6['name'] = df6['name'].apply(lambda item: get_display(arabic_reshaper.reshape
 # Sort the DataFrame by the date posted in descending order
 df6 = df6.sort_values(by='date_posted', ascending=False).head(10)
 
-# Display the newest podcasts in a scrolling carousel
+# Display the newest podcasts with a scrolling carousel
 st.title("Newest 10 Podcasts")
 
 # Configure the layout to have a horizontal scroll
@@ -202,6 +202,7 @@ st.markdown(
             white-space: nowrap;
             padding: 10px;
             display: flex;
+            align-items: center;
         }
         .scrolling-card {
             min-width: 300px;
@@ -224,4 +225,10 @@ with st.markdown('<div class="scrolling-container">', unsafe_allow_html=True):
             f'<div class="scrolling-card"><p style="font-weight: bold;">{row["name"]}</p></div>',
             unsafe_allow_html=True,
         )
+
+# Navigation arrows
+back_arrow = '<span style="font-size: 24px; cursor: pointer;" onclick="document.querySelector(\'.scrolling-container\').scrollBy({left: -400, behavior: \'smooth\'});">&lt;</span>'
+next_arrow = '<span style="font-size: 24px; cursor: pointer;" onclick="document.querySelector(\'.scrolling-container\').scrollBy({left: 400, behavior: \'smooth\'});">&gt;</span>'
+
+st.markdown(f"{back_arrow} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {next_arrow}", unsafe_allow_html=True)
 
