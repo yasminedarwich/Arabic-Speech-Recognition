@@ -155,7 +155,7 @@ if len(micAudio) > 0:
 st.header("Upload an Audio File 📤")
 
 # Add an option to upload an audio file
-uploaded_file = st.file_uploader("Choose an audio file to upload", type=["wav", "pcm", "AIFF/AIFF-C", "FLAC"])
+uploaded_file = st.file_uploader("Choose an audio file to upload", type=["wav", "AIFF/AIFF-C", "FLAC"])
 if uploaded_file is not None:
     with NamedTemporaryFile(delete=False) as temp_audio:
         temp_audio.write(uploaded_file.read())
