@@ -12,9 +12,9 @@ st.markdown(
     """
     <style>
         :root {
-            --primaryColor: #0404fb;
-            --secondaryBackgroundColor: #0404fb;
-            --textColor: #0404fb;
+            --primaryColor: #6FC0D3;
+            --secondaryBackgroundColor: #6FC0D3;
+            --textColor: #6FC0D3;
         }
         body {
             color: var(--textColor);
