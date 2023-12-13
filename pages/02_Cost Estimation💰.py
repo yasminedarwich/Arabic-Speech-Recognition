@@ -7,6 +7,44 @@ st.set_page_config(
     layout="wide"
 )
 
+# Custom styling with Ocean Breeze Palette
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #6FC0D3;  /* Ocean Breeze background */
+        color: #FFFFFF;
+    }
+    .sidebar .sidebar-content {
+        background-color: #1A4557;  /* Dark blue sidebar background */
+        color: #FFFFFF;
+    }
+    .sidebar .stRadio > div > label {
+        color: #FFFFFF;
+    }
+    .stButton > button {
+        background-color: #3A90A2;  /* Blue button color */
+        color: #FFFFFF;
+    }
+    .stButton > button:hover {
+        background-color: #2A6881;  /* Darker blue on hover */
+    }
+    .stTextInput {
+        background-color: #FFFFFF;  /* White text input background */
+        color: #000000;
+    }
+    .stSelectbox select {
+        background-color: #FFFFFF;
+        color: #000000;
+    }
+    h1, h2, h3 {
+        color: #3A90A2;  /* Blue headers */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 def calculate_transcription_cost(duration_minutes, cost_per_minute, audio_quality, num_speakers, urgency):
     try:
         duration_minutes = float(duration_minutes)
