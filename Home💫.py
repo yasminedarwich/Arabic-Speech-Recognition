@@ -41,7 +41,7 @@ st.set_page_config(
     layout="wide"
 )
 
-[theme]
+#theme
 base="dark"
 
 # Custom styling with Ocean Breeze Palette
