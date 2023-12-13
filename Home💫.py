@@ -34,8 +34,13 @@ class ArabicTranscriptionModel:
             st.error(f"Error with speech recognition service; {e}")
             return None
 
-# Set the page width
-st.set_page_config(layout="wide")
+# Set the page config
+st.set_page_config(
+    page_title="Arabic Speech Recognition",
+    page_icon="https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/static/voice.ico",  # Path to your favicon in the static folder
+    layout="wide"
+)
+
 
 # Custom styling with Ocean Breeze Palette
 st.markdown(
