@@ -177,7 +177,7 @@ if uploaded_file is not None:
         # Format options
         format_option = st.radio("Choose Format", ["Text File", "SRT File", "VTT File"],key="save")
     
-        if st.button("Click To Download ⬇️"):
+        if st.button("Click To Download ⬇️", key = "download"):
             if format_option == "Text File":
                 st.download_button(
                     label="Download Transcript as Text",
