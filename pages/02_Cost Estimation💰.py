@@ -44,6 +44,10 @@ def calculate_transcription_cost(duration_minutes, cost_per_minute, audio_qualit
         return None
 
 def main():
+
+    col1, col2, col3 = st.columns(3)
+    col2.image("hero-img.png", use_column_width=True)
+
     st.markdown("<h1 style='text-align: center;'>Arabic Transcription Cost Estimation</h1>", unsafe_allow_html=True)
 
     # Input
@@ -71,7 +75,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-col1, col2, col3 = st.columns(3)
-col2.image("hero-img.png", use_column_width=True)
 
