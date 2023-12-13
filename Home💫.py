@@ -40,6 +40,7 @@ st.set_page_config(
     page_icon="https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/static/voice.ico",  # Path to favicon in the static folder
     layout="wide"
 )
+st.set_theme("dark")
 
 
 # Custom styling with Ocean Breeze Palette
