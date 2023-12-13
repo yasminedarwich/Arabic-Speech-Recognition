@@ -28,6 +28,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+#theme
+base="dark"
+
 def calculate_transcription_cost(duration_minutes, cost_per_minute, audio_quality, num_speakers, urgency):
     try:
         duration_minutes = float(duration_minutes)
