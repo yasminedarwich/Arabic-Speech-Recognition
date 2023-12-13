@@ -82,19 +82,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-import time
-
-def custom_loading_animation():
-    st.image("Podcast.gif", caption="Loading...", use_column_width=True)
-
-    # Simulate processing
-    for i in range(100):
-        # Add a slight delay to simulate processing
-        time.sleep(0.05)
-
-# Display the custom loading animation
-custom_loading_animation()
-
 # Create a Streamlit app
 
 col1, col2 = st.columns(2)  # Two columns with equal width
