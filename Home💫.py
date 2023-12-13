@@ -104,7 +104,7 @@ st.markdown(
 
         With this app, you can easily transcribe your audio recordings. You have two options:
         1. Record Audio 🎤: Click the "Generate Transcripts✨" button, speak into your microphone, and let the app transcribe your speech.
-        2. Upload Audio File 📤: Upload an audio file in formats like WAV, PCM, AIFF/AIFF-C or Native FLAC, and get it transcribed instantly.
+        2. Upload Audio File 📤: Upload an audio file in formats like WAV, AIFF/AIFF-C or Native FLAC, and get it transcribed instantly.
 
         After transcription, you can save the text in various formats like Text File, SRT, or VTT. Click "Click To Download⬇️" to save your transcript.
 
