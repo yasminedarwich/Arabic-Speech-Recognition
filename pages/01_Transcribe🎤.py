@@ -79,6 +79,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+#theme
+base="dark"
+
 # Create a Streamlit app
 
 st.write("<h1 style='text-align: center;'>Start Transcribing!</h1>", unsafe_allow_html=True)
