@@ -7,6 +7,27 @@ st.set_page_config(
     layout="wide"
 )
 
+# Set the theme
+st.markdown(
+    """
+    <style>
+        :root {
+            --primaryColor: #0404fb;
+            --secondaryBackgroundColor: #0404fb;
+            --textColor: #0404fb;
+        }
+        body {
+            color: var(--textColor);
+            background-color: var(--secondaryBackgroundColor);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--primaryColor);
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 def calculate_transcription_cost(duration_minutes, cost_per_minute, audio_quality, num_speakers, urgency):
     try:
         duration_minutes = float(duration_minutes)
