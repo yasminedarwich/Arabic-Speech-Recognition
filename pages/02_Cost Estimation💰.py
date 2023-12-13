@@ -8,8 +8,7 @@ st.set_page_config(
 )
 
 # Custom styling with Ocean Breeze Palette
-st.markdown(
-    """
+ocean_breeze_style = """
     <style>
     body {
         background-color: #6FC0D3;  /* Ocean Breeze background */
@@ -41,9 +40,10 @@ st.markdown(
         color: #3A90A2;  /* Blue headers */
     }
     </style>
-    """,
-    unsafe_allow_html=True,
-)
+"""
+
+# Apply custom styling
+st.markdown(ocean_breeze_style, unsafe_allow_html=True)
 
 def calculate_transcription_cost(duration_minutes, cost_per_minute, audio_quality, num_speakers, urgency):
     try:
