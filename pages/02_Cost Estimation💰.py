@@ -1,5 +1,12 @@
 import streamlit as st
 
+# Set the page config
+st.set_page_config(
+    page_title="Arabic Speech Recognition",
+    page_icon="https://raw.githubusercontent.com/yasminedarwich/Arabic-Speech-Recognition/main/static/voice.ico",  # Path to your favicon in the static folder
+    layout="wide"
+)
+
 def calculate_transcription_cost(duration_minutes, cost_per_minute, audio_quality, num_speakers, urgency):
     try:
         duration_minutes = float(duration_minutes)
